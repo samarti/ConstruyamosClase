@@ -1,6 +1,6 @@
 // Настройки маркера
 var mapMarker = new google.maps.MarkerImage(
-                    'img/google-map-marker.png', // my 16x48 sprite with 3 circular icons
+                    'img/googlemapmarker.png', // my 16x48 sprite with 3 circular icons
                     new google.maps.Size(28,28),
                     null,
                     null,
