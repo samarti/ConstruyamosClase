@@ -1,0 +1,196 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *
+ */
+/*
+@import '../bower_components/bootstrap-select/less/bootstrap-select';
+@import '../bower_components/bootstrap-sweetalert/lib/sweet-alert';
+@import '../bower_components/bootstrap-sweetalert/lib/sweet-alert-combine';
+@import '../bower_components/slick-carousel/slick/slick';*/
+
+@import 'vendor/bootstrap';
+@import 'vendor/sweet-alert-animations';
+@import 'vendor/bootstrap-datetimepicker';
+@import 'vendor/select2';
+@import 'vendor/progress';
+@import 'vendor/jscrollpane';
+@import 'vendor/typeahead';
+@import 'vendor/fileupload';
+@import 'vendor/fileupload-ui';
+@import 'vendor/fancybox';
+@import 'vendor/bootstrap-touchspin';
+@import 'vendor/flag-icon/flag-icon';
+@import 'vendor/pnotify';
+
+@import 'partials/reset';
+@import 'partials/mixins';
+@import 'partials/vars';
+@import 'partials/helpers';
+@import 'partials/icons';
+@import 'partials/fonts';
+@import 'partials/typography';
+@import 'partials/forms';
+@import 'partials/grids';
+@import 'partials/interface';
+@import 'partials/base';
+@import 'partials/side';
+@import 'partials/print';
+
+@import 'elements/player';
+@import 'elements/steps';
+@import 'elements/cards';
+
+@import 'pages/dashboard';
+@import 'pages/chat';
+@import 'pages/error';
+@import 'pages/user';
+@import 'pages/login';
+@import 'pages/activity';
+@import 'pages/profile';
+@import 'pages/profile-2';
+@import 'pages/calendar';
+@import 'pages/prices';
+@import 'pages/gallery';
+@import 'pages/editor';
+@import 'pages/contacts';
+@import 'pages/files';
+@import 'pages/mail';
+@import 'pages/tasks';
+@import 'pages/project';
+@import 'pages/others';
+
+
+@font-face {
+	font-family: 'StartUI';
+	src: url('/assets/startui.eot');
+	src: url('/assets/startui.eot') format('embedded-opentype'),
+	url('/assets/startui.woff') format('woff'),
+	url('/assets/startui.ttf') format('truetype'),
+	url('/assets/startui.svg#startui') format('svg');
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('/assets/fontawesome-webfont.eot');
+	src: url('/assets/fontawesome-webfont.eot') format('embedded-opentype'),
+	url('/assets/fontawesome-webfont.woff2') format('woff2'),
+	url('/assets/fontawesome-webfont.woff') format('woff'),
+	url('/assets/fontawesome-webfont.ttf') format('truetype'),
+	url('/assets/fontawesome-webfont.svg#fontawesome-webfont') format('svg');
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	src: url('/assets/glyphicons-halflings-regular.eot');
+	src: url('/assets/glyphicons-halflings-regular.eot') format('embedded-opentype'),
+	url('/assets/glyphicons-halflings-regular.woff2') format('woff2'),
+	url('/assets/glyphicons-halflings-regular.woff') format('woff'),
+	url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
+	url('/assets/glyphicons-halflings-regular.svg#glyphicons-halflings-regular') format('svg');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('/assets/Proxima_Nova_Regular.eot');
+	src: url('/assets/Proxima_Nova_Regular.eot') format('embedded-opentype'),
+	url('/assets/Proxima_Nova_Regular.woff2') format('woff2'),
+	url('/assets/Proxima_Nova_Regular.woff') format('woff'),
+	url('/assets/Proxima_Nova_Regular.ttf') format('truetype'),
+	url('/assets/Proxima_Nova_Regular.svg#Proxima_Nova_Regular') format('svg');
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('/assets/Proxima_Nova_Regular_Italic.eot');
+	src: url('/assets/Proxima_Nova_Regular_Italic.eot') format('embedded-opentype'),
+	url('/assets/Proxima_Nova_Regular_Italic.woff2') format('woff2'),
+	url('/assets/Proxima_Nova_Regular_Italic.woff') format('woff'),
+	url('/assets/Proxima_Nova_Regular_Italic.ttf') format('truetype'),
+	url('/assets/Proxima_Nova_Regular_Italic.svg#Proxima_Nova_Regular_Italic') format('svg');
+	font-style: italic;
+	font-weight: 400;
+}
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('/assets/Proxima_Nova_Bold.eot');
+	src: url('/assets/Proxima_Nova_Bold.eot') format('embedded-opentype'),
+	url('/assets/Proxima_Nova_Bold.woff2') format('woff2'),
+	url('/assets/Proxima_Nova_Bold.woff') format('woff'),
+	url('/assets/Proxima_Nova_Bold.ttf') format('truetype'),
+	url('/assets/Proxima_Nova_Bold.svg#Proxima_Nova_Bold') format('svg');
+	font-style: normal;
+	font-weight: 700;
+}
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('/assets/Proxima_Nova_Bold_Italic.eot');
+	src: url('/assets/Proxima_Nova_Bold_Italic.eot') format('embedded-opentype'),
+	url('/assets/Proxima_Nova_Bold_Italic.woff2') format('woff2'),
+	url('/assets/Proxima_Nova_Bold_Italic.woff') format('woff'),
+	url('/assets/Proxima_Nova_Bold_Italic.ttf') format('truetype'),
+	url('/assets/Proxima_Nova_Bold_Italic.svg#Proxima_Nova_Bold_Italic') format('svg');
+	font-style: italic;
+	font-weight: 700;
+}
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('/assets/Proxima_Nova_Semibold.eot');
+	src: url('/assets/Proxima_Nova_Semibold.eot') format('embedded-opentype'),
+	url('/assets/Proxima_Nova_Semibold.woff2') format('woff2'),
+	url('/assets/Proxima_Nova_Semibold.woff') format('woff'),
+	url('/assets/Proxima_Nova_Semibold.ttf') format('truetype'),
+	url('/assets/Proxima_Nova_Semibold.svg#Proxima_Nova_Semibold') format('svg');
+	font-style: normal;
+	font-weight: 600;
+}
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('/assets/Proxima_Nova_Semibold_Italic.eot');
+	src: url('/assets/Proxima_Nova_Semibold_Italic.eot') format('embedded-opentype'),
+	url('/assets/Proxima_Nova_Semibold_Italic.woff2') format('woff2'),
+	url('/assets/Proxima_Nova_Semibold_Italic.woff') format('woff'),
+	url('/assets/Proxima_Nova_Semibold_Italic.ttf') format('truetype'),
+	url('/assets/Proxima_Nova_Semibold_Italic.svg#Proxima_Nova_Semibold_Italic') format('svg');
+	font-style: italic;
+	font-weight: 600;
+}
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('/assets/Proxima_Nova_Light.eot');
+	src: url('/assets/Proxima_Nova_Light.eot') format('embedded-opentype'),
+	url('/assets/Proxima_Nova_Light.woff2') format('woff2'),
+	url('/assets/Proxima_Nova_Light.woff') format('woff'),
+	url('/assets/Proxima_Nova_Light.ttf') format('truetype'),
+	url('/assets/Proxima_Nova_Light.svg#Proxima_Nova_Light') format('svg');
+	font-style: normal;
+	font-weight: 300;
+}
+@font-face {
+	font-family: 'Proxima Nova';
+	src: url('/assets/Proxima_Nova_Light_Italic.eot');
+	src: url('/assets/Proxima_Nova_Light_Italic.eot') format('embedded-opentype'),
+	url('/assets/Proxima_Nova_Light_Italic.woff2') format('woff2'),
+	url('/assets/Proxima_Nova_Light_Italic.woff') format('woff'),
+	url('/assets/Proxima_Nova_Light_Italic.ttf') format('truetype'),
+	url('/assets/Proxima_Nova_Light_Italic.svg#Proxima_Nova_Light_Italic') format('svg');
+	font-style: italic;
+	font-weight: 300;
+}

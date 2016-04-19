@@ -1,0 +1,49 @@
+//= template/head.html
+	<script src="js/lib/bootstrap-table/bootstrap-table.js"></script>
+	<script src="js/lib/bootstrap-table/jquery-ui.js"></script>
+	<script src="js/lib/bootstrap-table/bootstrap-table-reorder-columns.min.js"></script>
+	<script src="js/lib/bootstrap-table/jquery.dragtable.js"></script>
+	<script src="js/lib/bootstrap-table/bootstrap-table-reorder-columns-init.js"></script>
+	<link rel="stylesheet" href="css/lib/bootstrap-table/bootstrap-table.min.css">
+	<link rel="stylesheet" href="css/lib/bootstrap-table/dragtable.css">
+//= template/head-end.html
+<body class="with-side-menu">
+
+	//= template/header.html
+
+	//= template/side-menu.html
+
+	<div class="page-content">
+		<div class="container-fluid">
+
+			<section class="box-typical">
+				<div id="toolbar">
+					Reorder columns
+				</div>
+				<div class="table-responsive">
+					<table id="table"
+						   data-show-columns="true"
+						   data-search="true"
+						   data-pagination="true"
+						   data-reorderable-columns="true"
+						   data-toolbar="#toolbar">
+						<thead>
+							<tr>
+								<th data-field="id" data-sortable="true">ID</th>
+								<th data-field="name" data-sortable="true">Item Name</th>
+								<th data-field="price" data-sortable="true">Item Price</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</section><!--.box-typical-->
+
+		</div><!--.container-fluid-->
+	</div><!--.page-content-->
+
+	//= template/footer.html
+
+//= template/foot.html
+
+
+

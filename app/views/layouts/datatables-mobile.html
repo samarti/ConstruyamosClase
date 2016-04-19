@@ -1,0 +1,42 @@
+//= template/head.html
+	<script src="js/lib/bootstrap-table/bootstrap-table.js"></script>
+	<script src="js/lib/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script src="js/lib/bootstrap-table/bootstrap-table-mobile-init.js"></script>
+	<link rel="stylesheet" href="css/lib/bootstrap-table/bootstrap-table.min.css">
+//= template/head-end.html
+<body class="with-side-menu">
+
+	//= template/header.html
+
+	//= template/side-menu.html
+
+	<div class="page-content">
+		<div class="container-fluid">
+
+			<section class="box-typical">
+				<div id="toolbar">
+					Mobile
+				</div>
+				<table id="table"
+					   data-show-columns="true"
+					   data-search="true"
+					   data-mobile-responsive="true"
+					   data-check-on-init="true"
+					   data-toolbar="#toolbar">
+					<thead>
+					<tr>
+						<th data-field="id" data-sortable="true">ID</th>
+						<th data-field="name" data-sortable="true">Item Name</th>
+						<th data-field="price" data-sortable="true">Item Price</th>
+					</tr>
+					</thead>
+				</table>
+			</section><!--.box-typical-->
+
+		</div><!--.container-fluid-->
+	</div><!--.page-content-->
+
+	//= template/footer.html
+
+//= template/foot.html
+

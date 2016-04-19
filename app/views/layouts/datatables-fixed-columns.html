@@ -1,0 +1,35 @@
+//= template/head.html
+	<script src="js/lib/bootstrap-table/bootstrap-table.js"></script>
+	<script src="js/lib/bootstrap-table/bootstrap-table-fixed-columns.js"></script>
+	<script src="js/lib/bootstrap-table/bootstrap-table-fixed-columns-init.js"></script>
+	<link rel="stylesheet" href="css/lib/bootstrap-table/bootstrap-table.min.css">
+	<link rel="stylesheet" href="css/lib/bootstrap-table/bootstrap-table-fixed-columns.css">
+//= template/head-end.html
+<body class="with-side-menu">
+
+	//= template/header.html
+
+	//= template/side-menu.html
+
+	<div class="page-content">
+		<div class="container-fluid">
+
+			<section class="box-typical">
+				<div id="toolbar" class="form-inline">
+					<span>Fixed Number: </span>
+					<input class="form-control" id="fixedNumber" type="number" value="1" min="1" max="5">
+				</div>
+				<div class="table-responsive">
+					<table id="table" data-toggle="table" data-height="500" data-show-columns="true"></table>
+				</div>
+			</section><!--.box-typical-->
+
+		</div><!--.container-fluid-->
+	</div><!--.page-content-->
+
+	//= template/footer.html
+
+//= template/foot.html
+
+
+
