@@ -18,7 +18,7 @@ config/secrets.yml
 
 .idea/
 /public/assets
-
+/lib/assets/bower_components
 ## Environment normalization:
 /.bundle
 /vendor/bundle
@@ -36,3 +36,6 @@ bower.json
 
 # Ignore pow environment settings
 .powenv
+.DS_Store
+*.self-*
+/vendor/cache
