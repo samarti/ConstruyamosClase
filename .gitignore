@@ -39,3 +39,6 @@ bower.json
 .DS_Store
 *.self-*
 /vendor/cache
+
+# Ignore unofficial documentation
+/documentation/data_model.txt
