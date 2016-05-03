@@ -23,10 +23,10 @@ module ConstruyamosClase
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.assets.paths << Rails.root.join('app', 'assets', 'less', 'fonts', 'public', 'bower_components', 'css')
-    config.assets.precompile += %w( *.js )
-    config.assets.precompile += %w( *.svg *.eot *.woff *.woff2 *.ttf)
-    config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.svg]
-    config.assets.precompile += %w(dist/*)
+    #config.assets.paths << Rails.root.join('app', 'assets', 'less', 'fonts', 'public', 'bower_components', 'css')
+    #config.assets.precompile += %w( *.js )
+    #config.assets.precompile += %w( *.svg *.eot *.woff *.woff2 *.ttf)
+    #config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.svg]
+    #config.assets.precompile += %w(dist/*)
   end
 end

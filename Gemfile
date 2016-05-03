@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'nokogiri', '~> 1.6.8.rc2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+gem 'json', '~> 1.8.3'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -34,6 +35,16 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem  'libv8' ,'3.16.14.13'
 gem 'therubyracer', '0.12.1', :require => 'v8'
 gem 'less-rails', '~> 2.7.0'
+gem "select2-rails"
+
+gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'fancybox2-rails', '~> 0.2.8'
+gem 'jscrollpane-rails'
+gem 'bootstrap-select-rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 
 gem "bower-rails", "~> 0.10.0"
 
