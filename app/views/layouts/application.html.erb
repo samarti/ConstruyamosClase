@@ -2,19 +2,17 @@
 <html>
 <head>
   <title>Construyamos Clase</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>	
+  <%= csrf_meta_tags %>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
-<body>
-	<%= render :partial => "layouts/template/head" %>
 	<body class="with-side-menu"/>
-	<%= render :partial => "layouts/template/header" %>
-	<%= render :partial => "layouts/template/side_menu" %>
-	<%= render :partial => "layouts/template/footer" %>
-	<%= render :partial => "layouts/template/foot" %>
-
-  <%=yield%>
+        <%= stylesheet_link_tag 'application', params[:controller], :media => "all" %>
+        <%= javascript_include_tag 'application', params[:controller] %>
+        <%= render :partial => "layouts/template/head" %>
+    	<%= render :partial => "layouts/template/header" %>
+    	<%= render :partial => "layouts/template/side_menu" %>
+    	<%= render :partial => "layouts/template/footer" %>
+    	<%= render :partial => "layouts/template/foot" %>
+        <%=yield%>
 	</body>
 </html>
