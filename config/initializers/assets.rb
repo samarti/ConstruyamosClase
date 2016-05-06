@@ -10,8 +10,6 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'less', 'fonts', 'public', 'bower_components', 'css')
-Rails.application.config.assets.precompile += %w( *.js *.scss *.less)
-Rails.application.config.assets.precompile += %w( *.svg *.eot *.woff *.woff2 *.ttf)
-Rails.application.config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif *.svg]
-Rails.application.config.assets.precompile += %w( documents.scss )
+%w(documents welcome).each do |controller|
+  Rails.application.config.assets.precompile += ['#{controller}.js', '#{controller}.scss', '#{controller}.css']
+end
