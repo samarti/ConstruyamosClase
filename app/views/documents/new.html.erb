@@ -1,42 +1,7 @@
 <div class="page-content">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xl-6">
-					<section class="box-typical steps-numeric-block">
-						<div class="steps-numeric-header">
-							<div class="steps-numeric-header-in">
-								<ul>
-									<li><div class="item"><span class="num">1</span>Cart</div></li>
-									<li class="active"><div class="item"><span class="num">2</span>Customer information</div></li>
-									<li><div class="item"><span class="num">3</span>Shoping</div></li>
-									<li><div class="item"><span class="num">4</span>Payment</div></li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="steps-numeric-inner">
-							<header class="steps-numeric-title">Customer information</header>
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="E-Mail"/>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Password"/>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Repeat password"/>
-							</div>
-						</div>
-
-						<div class="tbl steps-numeric-footer">
-							<div class="tbl-row">
-								<a href="#" class="tbl-cell">← Return to Cart</a>
-								<a href="#" class="tbl-cell color-green">Continue to Shipping Method →</a>
-							</div>
-						</div>
-					</section><!--.steps-numeric-block-->
-				</div>
-
-				<div class="col-xl-6">
+				<div class="col-xl-10">
 					<section class="box-typical steps-icon-block">
 						<div class="steps-icon-progress">
 							<ul>
@@ -44,43 +9,66 @@
 									<div class="icon">
 										<i class="font-icon font-icon-cart-2"></i>
 									</div>
-									<div class="caption">Cart</div>
+									<div class="caption">Archivo</div>
 								</li>
-								<li class="active">
+								<li>
 									<div class="icon">
 										<i class="font-icon font-icon-pin-2"></i>
 									</div>
-									<div class="caption">Delivery</div>
+									<div class="caption">Detalles</div>
 								</li>
 								<li>
 									<div class="icon">
 										<i class="font-icon font-icon-card"></i>
 									</div>
-									<div class="caption">Payment</div>
+									<div class="caption">Descripción</div>
 								</li>
 								<li>
 									<div class="icon">
 										<i class="font-icon font-icon-check-bird"></i>
 									</div>
-									<div class="caption">Confirmation</div>
+									<div class="caption">Confirmación</div>
 								</li>
 							</ul>
 						</div>
-
-						<header class="steps-numeric-title">Customer information</header>
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="E-Mail"/>
+						<form class="form-section">
+							<header class="steps-numeric-title">Archivo</header>
+							<%= render :partial => "documents/fileupload" %>
+						</form>
+						<form class="form-section">
+							<header class="steps-numeric-title">2nd sec.</header>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Password"/>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Repeat password"/>
+							</div>
+						</form>
+						<form class="form-section">
+							<header class="steps-numeric-title">3rd sec.</header>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Password"/>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Repeat password"/>
+							</div>
+						</form>
+						<form class="form-section">
+							<header class="steps-numeric-title">4th sec.</header>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Password"/>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Repeat password"/>
+							</div>
+						</form>
+						<div class="form-navigation">
+							<button type="button" class="previous btn btn-rounded btn-grey float-left">← Atrás</button>
+							<button type="button" class="next btn btn-rounded float-right">Siguiente →</button>
 						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" placeholder="Password"/>
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" placeholder="Repeat password"/>
-						</div>
-						<button type="button" class="btn btn-rounded btn-grey float-left">← Back</button>
-						<button type="button" class="btn btn-rounded float-right">Next →</button>
 					</section><!--.steps-icon-block-->
 				</div>
-			</div><!--.row-->
-		</div><!--.container-fluid-->
-	</div><!--.page-content-->
+			</div>
+		</div><!--.row-->
+	</div><!--.container-fluid-->
+</div><!--.page-content-->
