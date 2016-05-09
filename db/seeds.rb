@@ -12,7 +12,7 @@ for i in 1..20
 end
 
 for i in 1..100
-  Teacher.create({first_name: "Profesor #{i}", last_name: "Diaz #{i}", email: "samarti#{i}@uc.cl"})
+  Teacher.create({first_name: "Profesor #{i}", last_name: "Diaz #{i}", email: "samarti#{i}@uc.cl", password:"#{100000+i}"})
 end
 
 Level.create([{name:"Pre kinder"}, {name:"Kinder"}, {name:"Primero Básico"}, {name:"Segundo Básico"}, {name:"Tercero Básico"}, {name:"Cuarto Básico"},

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'signup' => 'teachers#new'
+  post 'teachers/create'
   get 'sessions/new'
 
   resources :documents
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,43 @@
+
+<body>
+
+<div class="page-center">
+  <div class="page-center-in">
+    <div class="container-fluid">
+
+      <form class="sign-box" action="/teachers/create" method="post">
+
+        <%if @error%>
+            <div class="alert alert-danger alert-no-border alert-txt-colored alert-close alert-dismissible fade in" role="alert">
+              Datos invalidos
+            </div>
+        <%end%>
+
+        <input name="authenticity_token" type="hidden"
+               value="<%= form_authenticity_token %>" />
+        <header class="sign-title">Registro</header>
+        <div class="form-group">
+          <input name="first_name" type="text" class="form-control" placeholder="Nombre"/>
+        </div>
+        <div class="form-group">
+          <input name="last_name" type="text" class="form-control" placeholder="Apellido"/>
+        </div>
+        <div class="form-group">
+          <input name="email" type="text" class="form-control" placeholder="E-Mail"/>
+        </div>
+        <div class="form-group">
+          <input name="password" type="password" class="form-control" placeholder="Password"/>
+        </div>
+        <div class="form-group">
+          <input name="password_confirmation" type="password" class="form-control" placeholder="Repeat password"/>
+        </div>
+        <button type="submit" class="btn btn-rounded btn-success sign-up">Sign up</button>
+
+      </form>
+    </div>
+  </div>
+</div><!--.page-center-->
+
+
+
+
