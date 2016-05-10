@@ -13,3 +13,9 @@ Rails.application.config.assets.version = '1.0'
 %w(documents welcome).each do |controller|
   Rails.application.config.assets.precompile += ['#{controller}.js', '#{controller}.scss', '#{controller}.css']
 end
+
+Rails.application.config.assets.precompile += %w( welcome.css )
+Rails.application.config.assets.precompile += %w( welcome.js )
+
+Rails.application.config.assets.precompile += %w( documents.css )
+Rails.application.config.assets.precompile += %w( documents.js )
