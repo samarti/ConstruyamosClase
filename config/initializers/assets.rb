@@ -16,3 +16,6 @@ end
 
 Rails.application.config.assets.precompile += %w( documents.css )
 Rails.application.config.assets.precompile += %w( documents.js )
+
+Rails.application.config.assets.precompile += %w( welcome.css )
+Rails.application.config.assets.precompile += %w( welcome.js )

@@ -7,6 +7,7 @@ You can use CoffeeScript in this file: http://coffeescript.org/
 //= require ./documents/dropzone.js
 //= require ./documents/parsley.min.js
 //= require_tree ./documents/i18n/.
+//= require_tree ./documents/tagsjs/.
 
 $(function () {
     var $sections = $('.form-section');
@@ -76,6 +77,7 @@ $(function () {
         },
         error: function (file, response) {
             file.previewElement.classList.add("dz-error");
+            uploaded = true;
         },
     });
 });
