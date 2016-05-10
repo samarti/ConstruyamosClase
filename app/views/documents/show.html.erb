@@ -1,50 +1,103 @@
 <div class="page-content">
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3">
-      <section class="box-typical">
-        <img src="../app/assets/images/pdf_icon.png"/>
-        <button class="btn btn-rounded" type="button" name="button">Descargar</button> <br>
-        Creador: Juan Pérez
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-6">
-              % Likes
-            </div>
-            <div class="col-sm-6">
-              nº Comentarios
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <section class="box-typical">
+          <div class="document-card">
+            <div class="document-card-image"><%= image_tag("pdf_icon.png") %></div>
+            <div class="document-card-title">Historia de Chile: Manuel Montt</div>
+            <div class="document-card-owner">Creador: Juan Pérez</div>
+            <button class="btn btn-rounded" type="button" name="button">Descargar</button>
+          </div>
+          <div class="document-statistic tbl">
+            <div class="tbl-row">
+              <div class="tbl-cell">
+                <b>4.3</b><br>Estrellas
+              </div>
+              <div class="tbl-cell">
+                <b>25</b><br>Comentarios
+              </div>
             </div>
           </div>
+          <div class="tag-container">
+            <div class="tag">Tercero Medio</div>
+            <div class="tag">Manuel Montt</div>
+            <div class="tag">Historia de Chile</div>
+            <div class="tag">Héroe Chileno</div>
+          </div>
         </div>
-        Tags <br>
-        Niveles <br>
-        Asignaturas
+      </section>
+
+      <div class="col-sm-9">
+        <section class="box-typical">
+          <header class="box-typical-header-sm">Descripción</header>
+          <p class="document-info-item">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </section>
+        <div class="row document-evaluation">
+
+          <div class="col-sm-10">
+            <section class="box-typical">
+              <textarea rows="5" class="form-control" placeholder="Comenta" data-autosize="" style="overflow: hidden; word-wrap: break-word; height: 130px;"></textarea>
+            </section>
+          </div>
+
+          <div class="col-sm-2">
+            <section class="card">
+              <header class="card-header">Evalúa</header>
+              <div class="card-block">
+                <span class="font-icon font-icon-star"></span>
+                <select id="stars-select" class="form-control">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </section>
+          </div>
+
+        </div>
+
+        <section class="box-typical">
+          <header class="box-typical-header-sm">Comentarios</header>
+          <article class="comment-list-item">
+
+            <header class="comment-list-header">
+              <div class="user-card-row">
+                <div class="tbl-row">
+
+                  <div class="tbl-cell tbl-cell-photo">
+                    <a href="#" tabindex="0">
+                      <img src="img/photo-64-3.jpg" alt="">
+                    </a>
+                  </div>
+
+                  <div class="tbl-cell">
+                    <p class="user-card-row-name"><a href="#" tabindex="0">Molly Bridjet</a></p>
+                    <p class="user-card-row-status"><a href="#" tabindex="0">PatchworkLabs</a></p>
+                  </div>
+
+                </div>
+              </div>
+            </header>
+
+            <div class="text-block text-block-typical">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </p>
+            </div>
+
+          </article>
+          Comentario 2 <br>
+          Comentario 3 <br>
+          Comentario 4 <br>
+        </section>
+
       </div>
-      </section>
-
-    <div class="col-sm-9">
-      <section class="box-typical">
-        <header class="box-typical-header-sm">Descripción</header>
-        <p class="document-info-item">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </section>
-      <section class="box-typical">
-        <div class="form-control-wrapper form-control-icon-left">
-			       <input type="text" class="form-control" placeholder="Left">
-			       <i class="fa fa-youtube-play"></i>
-				</div>
-        <textarea rows="4" class="form-control" placeholder="Ingresa un comentario" data-autosize="" style="overflow: hidden; word-wrap: break-word; height: 110px;"></textarea>
-      </section>
-      <section class="box-typical">
-        Comentario 1 <br>
-        Comentario 2 <br>
-        Comentario 3 <br>
-      </section>
-
     </div>
   </div>
-</div>
 </div>
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
