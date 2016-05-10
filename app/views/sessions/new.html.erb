@@ -4,14 +4,12 @@
 <div class="page-center">
   <div class="page-center-in">
     <div class="container-fluid">
-
-      <%if @error%>
-          <div class="alert alert-danger alert-no-border alert-close alert-dismissible fade in" role="alert">
-            Usuario o clave incorrecta
-          </div>
-      <%end%>
-
       <form class="sign-box" action="/login" method="post">
+        <%if @error%>
+            <div class="alert alert-danger alert-no-border alert-close alert-dismissible fade in" role="alert">
+              Usuario o clave incorrecta
+            </div>
+        <%end%>
         <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
         <div class="sign-avatar">
           <img src="/assets/avatarsign.png" alt="">
