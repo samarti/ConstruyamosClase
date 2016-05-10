@@ -11,11 +11,15 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 %w(documents welcome).each do |controller|
-  Rails.application.config.assets.precompile += ['#{controller}.js', '#{controller}.scss', '#{controller}.css']
+  Rails.application.config.assets.precompile += ['#{controller}.js', '#{controller}.css']
 end
+
+Rails.application.config.assets.precompile += %w( documents.css )
+Rails.application.config.assets.precompile += %w( documents.js )
 
 Rails.application.config.assets.precompile += %w( welcome.css )
 Rails.application.config.assets.precompile += %w( welcome.js )
 
-Rails.application.config.assets.precompile += %w( documents.css )
-Rails.application.config.assets.precompile += %w( documents.js )
+Rails.application.config.assets.precompile += %w( teachers.css )
+Rails.application.config.assets.precompile += %w( teachers.js )
+
