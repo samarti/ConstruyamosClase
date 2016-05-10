@@ -971,10 +971,6 @@ $(document).ready(function(){
 				marginLeft: -padding,
 				marginRight: -padding
 			});
-
-			console.log(padLeft);
-			console.log(padRight);
-			console.log(padding);
 		});
 	}
 

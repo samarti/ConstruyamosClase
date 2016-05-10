@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20160508212011) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "description"
+    t.string   "name"
+    t.json     "tags"
   end
 
   create_table "documents_levels", id: false, force: :cascade do |t|

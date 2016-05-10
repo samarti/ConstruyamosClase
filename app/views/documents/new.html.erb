@@ -1,5 +1,78 @@
-<h1>New Document</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', documents_path %>
+<div class="page-content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-10">
+					<section class="box-typical steps-icon-block">
+						<div class="steps-icon-progress">
+							<ul>
+								<li class="active">
+									<div class="icon">
+										<i class="font-icon font-icon-cart-2"></i>
+									</div>
+									<div class="caption">Archivo</div>
+								</li>
+								<li>
+									<div class="icon">
+										<i class="font-icon font-icon-pin-2"></i>
+									</div>
+									<div class="caption">Detalles</div>
+								</li>
+								<li>
+									<div class="icon">
+										<i class="font-icon font-icon-card"></i>
+									</div>
+									<div class="caption">Descripción</div>
+								</li>
+								<li>
+									<div class="icon">
+										<i class="font-icon font-icon-check-bird"></i>
+									</div>
+									<div class="caption">Confirmación</div>
+								</li>
+							</ul>
+						</div>
+						<form class="form-section">
+							<header class="steps-numeric-title">Archivo</header>
+							<%= render :partial => "documents/fileupload" %>
+						</form>
+						<form class="form-section">
+							<header class="steps-numeric-title">Detalles</header>
+							<div class="form-group">
+								<input class="form-control" placeholder="Nombre"/>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-lg-12">
+										<textarea id="tags-editor-textarea" class="tag-editor-hidden-src">example,example,example</textarea><ul class="tag-editor"><li style="width:1px">&nbsp;</li><li><div class="tag-editor-spacer">&nbsp;,</div><div class="tag-editor-tag">example</div><div class="tag-editor-delete"><i></i></div></li><li><div class="tag-editor-spacer">&nbsp;,</div><div class="tag-editor-tag">example</div><div class="tag-editor-delete"><i></i></div></li><li><div class="tag-editor-spacer">&nbsp;,</div><div class="tag-editor-tag">example</div><div class="tag-editor-delete"><i></i></div></li></ul>
+									</div>
+								</div>
+							</div>
+						</form>
+						<form class="form-section">
+							<header class="steps-numeric-title">3rd sec.</header>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Password"/>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Repeat password"/>
+							</div>
+						</form>
+						<form class="form-section">
+							<header class="steps-numeric-title">4th sec.</header>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Password"/>
+							</div>
+							<div class="form-group">
+								<input type="password" class="form-control" placeholder="Repeat password"/>
+							</div>
+						</form>
+						<div class="form-navigation">
+							<button type="button" class="previous btn btn-rounded btn-grey float-left">← Atrás</button>
+							<button type="button" class="next btn btn-rounded float-right">Siguiente →</button>
+						</div>
+					</section><!--.steps-icon-block-->
+				</div>
+			</div>
+		</div><!--.row-->
+	</div><!--.container-fluid-->
+</div><!--.page-content-->
