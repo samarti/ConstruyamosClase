@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508212011) do
+ActiveRecord::Schema.define(version: 20160511002035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,19 +29,17 @@ ActiveRecord::Schema.define(version: 20160508212011) do
     t.string   "url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "description"
     t.string   "name"
     t.json     "tags"
+    t.string   "description"
+    t.integer  "teacher_id"
   end
+
+  add_index "documents", ["teacher_id"], name: "index_documents_on_teacher_id", using: :btree
 
   create_table "documents_levels", id: false, force: :cascade do |t|
     t.integer "document_id", null: false
     t.integer "level_id",    null: false
-  end
-
-  create_table "documents_ratings", id: false, force: :cascade do |t|
-    t.integer "document_id", null: false
-    t.integer "rating_id",   null: false
   end
 
   create_table "documents_subjects", id: false, force: :cascade do |t|
@@ -58,14 +56,14 @@ ActiveRecord::Schema.define(version: 20160508212011) do
   create_table "ratings", force: :cascade do |t|
     t.integer  "grade"
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "document_id"
+    t.integer  "teacher_id"
   end
 
-  create_table "ratings_teachers", id: false, force: :cascade do |t|
-    t.integer "teacher_id", null: false
-    t.integer "rating_id",  null: false
-  end
+  add_index "ratings", ["document_id"], name: "index_ratings_on_document_id", using: :btree
+  add_index "ratings", ["teacher_id"], name: "index_ratings_on_teacher_id", using: :btree
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
@@ -89,13 +87,13 @@ ActiveRecord::Schema.define(version: 20160508212011) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "course_id"
-    t.integer  "document_id"
   end
 
   add_index "teachers", ["course_id"], name: "index_teachers_on_course_id", using: :btree
-  add_index "teachers", ["document_id"], name: "index_teachers_on_document_id", using: :btree
 
   add_foreign_key "courses", "students"
+  add_foreign_key "documents", "teachers"
+  add_foreign_key "ratings", "documents"
+  add_foreign_key "ratings", "teachers"
   add_foreign_key "teachers", "courses"
-  add_foreign_key "teachers", "documents"
 end

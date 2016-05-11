@@ -5,24 +5,28 @@
         <section class="box-typical">
           <div class="document-card">
             <div class="document-card-image"><%= image_tag("pdf_icon.png") %></div>
-            <div class="document-card-title">Historia de Chile: Manuel Montt</div>
-            <div class="document-card-owner">Creador: Juan Pérez</div>
-            <button class="btn btn-rounded" type="button" name="button">Descargar</button>
+            <div class="document-card-title"><%=@document.name%></div>
+            <div class="document-card-owner"><%=@document.teacher.full_name%></div>
+            <div class="document-card-owner-mail"><%=@document.teacher.email%></div>
+            <button class="btn btn-rounded" type="button" name="download">Descargar</button>
           </div>
           <div class="document-statistic tbl">
             <div class="tbl-row">
               <div class="tbl-cell">
-                <b>4.3</b><br>Estrellas
+                <b><%=@document.getStars%></b><br>Estrellas
               </div>
               <div class="tbl-cell">
-                <b>25</b><br>Comentarios
+                <b><%=@document.ratings.count%></b><br>
+                <% if @document.ratings.count < 2 %>Comentario
+                <% else %> Comentarios
+                <% end %>
               </div>
             </div>
           </div>
           <div class="tag-container">
-            <div class="tag">Tercero Medio</div>
+            <div class="tag"><%=@document.levels.first.name%></div>
             <div class="tag">Manuel Montt</div>
-            <div class="tag">Historia de Chile</div>
+            <div class="tag"><%=@document.subjects.first.name%></div>
             <div class="tag">Héroe Chileno</div>
           </div>
         </div>
@@ -32,7 +36,7 @@
         <section class="box-typical">
           <header class="box-typical-header-sm">Descripción</header>
           <p class="document-info-item">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <%= @document.description %>
           </p>
         </section>
         <div class="row document-evaluation">
@@ -61,6 +65,8 @@
 
         </div>
 
+        <button id="send-button" class="btn btn-rounded" type="button" name="sumbit">Enviar</button>
+
         <section class="box-typical">
           <header class="box-typical-header-sm">Comentarios</header>
           <article class="comment-list-item">
@@ -71,13 +77,13 @@
 
                   <div class="tbl-cell tbl-cell-photo">
                     <a href="#" tabindex="0">
-                      <img src="img/photo-64-3.jpg" alt="">
+                      <%= image_tag @document.ratings.first.teacher.profile_picture %>
                     </a>
                   </div>
 
                   <div class="tbl-cell">
-                    <p class="user-card-row-name"><a href="#" tabindex="0">Molly Bridjet</a></p>
-                    <p class="user-card-row-status"><a href="#" tabindex="0">PatchworkLabs</a></p>
+                    <p class="user-card-row-name"><a href="#" tabindex="0"><%=@document.ratings.first.teacher.first_name%></a></p>
+                    <p class="user-card-row-status"><a href="#" tabindex="0"><%=@document.ratings.first.teacher.email%></a></p>
                   </div>
 
                 </div>
@@ -85,14 +91,10 @@
             </header>
 
             <div class="text-block text-block-typical">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </p>
+              "<%= @document.ratings.first.comment%>"
             </div>
 
           </article>
-          Comentario 2 <br>
-          Comentario 3 <br>
-          Comentario 4 <br>
         </section>
 
       </div>
