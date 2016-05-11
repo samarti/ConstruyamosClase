@@ -8,7 +8,7 @@
             <div class="document-card-title"><%=@document.name%></div>
             <div class="document-card-owner"><%=@document.teacher.full_name%></div>
             <div class="document-card-owner-mail"><%=@document.teacher.email%></div>
-            <button class="btn btn-rounded" type="button" name="button">Descargar</button>
+            <button class="btn btn-rounded" type="button" name="download">Descargar</button>
           </div>
           <div class="document-statistic tbl">
             <div class="tbl-row">
@@ -64,6 +64,8 @@
           </div>
 
         </div>
+
+        <button id="send-button" class="btn btn-rounded" type="button" name="sumbit">Enviar</button>
 
         <section class="box-typical">
           <header class="box-typical-header-sm">Comentarios</header>
