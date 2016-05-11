@@ -1,2 +1,35 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="page-content">
+  <section class="card card-blue">
+    <header class="card-header">
+      Últimos documentos
+    </header>
+    <div class="card-block">
+      <p class="card-text">
+        <div class="container-fluid">
+          <div class="row">
+            <% Document.last(6).reverse.each do |doc|  %>
+            <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
+            <% end %>
+          </div>
+        </div>
+      </p>
+    </div>
+  </section>
+
+  <section class="card card-blue">
+    <header class="card-header">
+      Documentos destacados
+    </header>
+    <div class="card-block">
+      <p class="card-text">
+        <div class="container-fluid">
+          <div class="row">
+            <% Document.getRanking.last(6).reverse.each do |doc|  %>
+            <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
+            <% end %>
+          </div>
+        </div>
+      </p>
+    </div>
+  </section>
+</div>

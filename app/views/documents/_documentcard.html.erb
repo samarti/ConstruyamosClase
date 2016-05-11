@@ -1,0 +1,24 @@
+<div class="col-sm-2">
+  <div class="box-typical">
+    <div class="document-card">
+    <div class="document-card-image"><%= image_tag("pdf_icon.png") %></div>
+    <div class="document-card-title"><%=doc.name%></div>
+    <div class="document-card-owner">Full name</div>
+    <div class="document-card-owner-mail">e-mail</div>
+    <div class="document-card-date"><%=doc.updated_at%></div>
+  </div>
+  <div class="document-statistic tbl">
+    <div class="tbl-row">
+      <div class="tbl-cell">
+        <b><%=doc.average_rating%></b><div style="font-size:11px;">Estrellas</div>
+      </div>
+      <div class="tbl-cell">
+        <b><%=doc.ratings.count%></b>
+        <% if doc.ratings.count < 2 %> <div style="font-size:11px;">Comentario</div>
+        <% else %> <div style="font-size:11px;">Comentarios</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

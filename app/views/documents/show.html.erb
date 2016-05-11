@@ -3,26 +3,7 @@
     <div class="row">
       <div class="col-sm-3">
         <section class="box-typical">
-          <div class="document-card">
-            <div class="document-card-image"><%= image_tag("pdf_icon.png") %></div>
-            <div class="document-card-title"><%=@document.name%></div>
-            <div class="document-card-owner"><%=@document.teacher.full_name%></div>
-            <div class="document-card-owner-mail"><%=@document.teacher.email%></div>
-            <button class="btn btn-rounded" type="button" name="download">Descargar</button>
-          </div>
-          <div class="document-statistic tbl">
-            <div class="tbl-row">
-              <div class="tbl-cell">
-                <b><%=@document.getStars%></b><br>Estrellas
-              </div>
-              <div class="tbl-cell">
-                <b><%=@document.ratings.count%></b><br>
-                <% if @document.ratings.count < 2 %>Comentario
-                <% else %> Comentarios
-                <% end %>
-              </div>
-            </div>
-          </div>
+          <%= render :partial => "documents/documentcard", :locals => {:doc => @document} %>
           <div class="tag-container">
             <div class="tag"><%=@document.levels.first.name%></div>
             <div class="tag">Manuel Montt</div>
