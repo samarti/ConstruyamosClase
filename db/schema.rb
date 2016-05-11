@@ -88,9 +88,11 @@ ActiveRecord::Schema.define(version: 20160511024159) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "course_id"
+    t.string   "password_digest"
   end
 
   add_index "teachers", ["course_id"], name: "index_teachers_on_course_id", using: :btree
+  add_index "teachers", ["email"], name: "index_teachers_on_email", unique: true, using: :btree
 
   add_foreign_key "courses", "students"
   add_foreign_key "documents", "teachers"

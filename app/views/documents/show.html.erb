@@ -50,6 +50,7 @@
 
         <section class="box-typical">
           <header class="box-typical-header-sm">Comentarios</header>
+          <% @document.ratings.each do |rating| %>
           <article class="comment-list-item">
 
             <header class="comment-list-header">
@@ -58,13 +59,16 @@
 
                   <div class="tbl-cell tbl-cell-photo">
                     <a href="#" tabindex="0">
-                      <%= image_tag @document.ratings.first.teacher.profile_picture %>
+                      <%= image_tag rating.teacher.profile_picture %>
                     </a>
                   </div>
 
                   <div class="tbl-cell">
-                    <p class="user-card-row-name"><a href="#" tabindex="0"><%=@document.ratings.first.teacher.first_name%></a></p>
-                    <p class="user-card-row-status"><a href="#" tabindex="0"><%=@document.ratings.first.teacher.email%></a></p>
+                    <p class="user-card-row-name"><a href="#" tabindex="0"><%=rating.teacher.full_name%></a></p>
+                    <p class="user-card-row-status"><a href="#" tabindex="0"><%=rating.teacher.email%></a></p>
+                  </div>
+                  <div class="tbl-cell">
+                    <%=rating.grade%><span class="font-icon font-icon-star"></span>
                   </div>
 
                 </div>
@@ -72,15 +76,14 @@
             </header>
 
             <div class="text-block text-block-typical">
-              "<%= @document.ratings.first.comment%>"
+              "<%= rating.comment%>"
             </div>
 
           </article>
+          <% end %>
         </section>
 
       </div>
     </div>
   </div>
 </div>
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>

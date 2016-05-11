@@ -1,11 +1,10 @@
-<div class="col-sm-2">
-  <div class="box-typical">
-    <div class="document-card">
-    <div class="document-card-image"><%= image_tag("pdf_icon.png") %></div>
+<div class="box-typical">
+  <div class="document-card">
+    <div class="document-card-image"><%= link_to image_tag("pdf_icon.png"), document_path(doc)%></div>
     <div class="document-card-title"><%=doc.name%></div>
-    <div class="document-card-owner">Full name</div>
-    <div class="document-card-owner-mail">e-mail</div>
-    <div class="document-card-date"><%=doc.updated_at%></div>
+    <div class="document-card-owner"><%=doc.teacher.full_name%></div>
+    <div class="document-card-owner-mail"><%=doc.teacher.email%></div>
+    <div class="document-card-date"><%=doc.updated_at.strftime("%d/%m/%Y") %></div>
   </div>
   <div class="document-statistic tbl">
     <div class="tbl-row">
@@ -19,6 +18,5 @@
         <% end %>
       </div>
     </div>
-  </div>
   </div>
 </div>
