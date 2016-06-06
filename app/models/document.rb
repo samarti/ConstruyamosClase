@@ -16,4 +16,8 @@ class Document < ActiveRecord::Base
   def self.getRanking
     return Document.order(:average_rating)
   end
+
+  def ratings_by_date
+    return self.ratings.order(created_at: :desc)
+  end
 end

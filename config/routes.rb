@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   resources :documents
-  
+  resources :ratings
+  resources :teachers
+
   get 'welcome/index'
   root 'welcome#index'
 

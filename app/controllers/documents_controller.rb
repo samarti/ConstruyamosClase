@@ -61,6 +61,9 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def add_rating
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_document

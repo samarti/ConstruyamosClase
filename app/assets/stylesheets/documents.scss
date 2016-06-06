@@ -53,9 +53,15 @@
   margin-bottom: 6%;
 }
 
-#stars-select{
+#rating_grade{
   margin-top: 5px;
   text-indent: 25px;
+}
+
+#rating_comment{
+  overflow: hidden;
+  word-wrap: break-word;
+  height: 132px;
 }
 /*
  * The MIT License
