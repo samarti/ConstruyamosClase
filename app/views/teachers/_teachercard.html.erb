@@ -1,0 +1,12 @@
+<div class="box-typical">
+  <div class="document-card">
+    <div class="document-card-image"><%= link_to image_tag(teacher.profile_picture), teacher_path(teacher)%></div>
+    <div class="document-card-title"><%=teacher.full_name%></div>
+    <div class="document-card-owner-mail"><%=teacher.email%></div>
+  </div>
+  <div class="document-statistic tbl">
+    <div class="tbl-row">
+        <b><%=teacher.get_rating.to_s%></b><div style="font-size:11px;"><%="Estrella".pluralize(teacher.get_rating)%></div>
+    </div>
+  </div>
+</div>

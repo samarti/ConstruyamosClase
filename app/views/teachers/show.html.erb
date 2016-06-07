@@ -1,0 +1,20 @@
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <section class="box-typical">
+          <%= render :partial => "teachers/teachercard", :locals => {:teacher => @teacher} %>
+        </section>
+
+        <% if current_teacher == @teacher %>
+        <div class="col-sm-6 col-sm-offset-3" style="text-align: center;">
+          <section class="box-typical">
+            <header class="box-typical-header-sm"><%= link_to "Editar", edit_teacher_path(@teacher) %></header>
+          </section>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

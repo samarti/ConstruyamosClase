@@ -9,13 +9,11 @@
   <div class="document-statistic tbl">
     <div class="tbl-row">
       <div class="tbl-cell">
-        <b><%=doc.average_rating%></b><div style="font-size:11px;">Estrellas</div>
+        <b><%=doc.average_rating%></b><div style="font-size:11px;"><%="Estrella".pluralize(doc.average_rating)%></div>
       </div>
       <div class="tbl-cell">
         <b><%=doc.ratings.count%></b>
-        <% if doc.ratings.count < 2 %> <div style="font-size:11px;">Comentario</div>
-        <% else %> <div style="font-size:11px;">Comentarios</div>
-        <% end %>
+        <div style="font-size:11px;"><%="Comentario".pluralize(doc.ratings.count)%></div>
       </div>
     </div>
   </div>

@@ -1,4 +1,6 @@
 class TeachersController < ApplicationController
+  before_action :set_teacher, only: [:show, :edit, :update, :destroy]
+
   def new
     @error = params[:error]
     render 'new', layout: "template/_layout_login"
@@ -18,6 +20,10 @@ class TeachersController < ApplicationController
   end
 
   private
+  def set_teacher
+    @teacher = Teacher.find(params[:id])
+  end
+
   def user_params
     params.permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
