@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get 'welcome/index'
     root 'welcome#index'
 
+    get 'documents/typeahead/:query' => 'documents#typeahead'
+
     get 'login' => 'sessions#new'
     post 'login' => 'sessions#create'
     get 'logout' => 'sessions#destroy'
