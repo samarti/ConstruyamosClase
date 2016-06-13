@@ -6,3 +6,4 @@
 
 //= require ./plugins2.js
 //= require ./app/app.js
+//= require bootstrap-typeahead-rails

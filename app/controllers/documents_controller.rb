@@ -4,7 +4,8 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    @search = DocumentSearch.new(search_params)
+    @documents = search_params.present? ? @search.results : Document.all
   end
 
   # GET /documents/1
@@ -15,6 +16,11 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   def new
     @document = Document.new
+  end
+
+  def typeahead
+    @search  = DocumentSearch.new(typeahead: params[:query])
+    render json: @search.results
   end
 
   # GET /documents/1/edit
@@ -62,6 +68,10 @@ class DocumentsController < ApplicationController
   end
 
   def add_rating
+  end
+
+  def search_params
+    params[:thing_search] || {}
   end
 
   private

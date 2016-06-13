@@ -41,6 +41,8 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'fancybox2-rails', '~> 0.2.8'
 gem 'jscrollpane-rails'
 gem 'bootstrap-select-rails'
+gem 'bootstrap-typeahead-rails'
+gem 'searchlight'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
