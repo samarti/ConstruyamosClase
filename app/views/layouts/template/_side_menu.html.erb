@@ -24,7 +24,7 @@
                 <span class="lbl">Material de Clases</span>
             </span>
             <ul>
-                <li><a href="chat-write.html"><span class="lbl">Mi Material</span></a></li>
+                <li><span class="lbl"> <%=link_to "Mi Material", teacher_documents_path(current_teacher)%></span></li>
                 <li><a href="chat-index.html"><span class="lbl">Material Favorito</span></a></li>
                 <li>
                     <%= link_to(new_document_path) do %>

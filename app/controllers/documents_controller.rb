@@ -4,7 +4,11 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    if params[:teacher_id].present?
+      @documents = Teacher.find(params[:teacher_id]).documents
+    else
+      @documents = Document.all
+    end
   end
 
   # GET /documents/1
@@ -65,13 +69,13 @@ class DocumentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_document
-      @document = Document.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_document
+    @document = Document.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def document_params
-      params.fetch(:document, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def document_params
+    params.fetch(:document, {})
+  end
 end
