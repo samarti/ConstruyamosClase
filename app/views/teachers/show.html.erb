@@ -15,6 +15,72 @@
         <% end %>
 
       </div>
+      <div class="col-sm-9">
+
+        <section class="card card-blue">
+          <header class="card-header">
+            Documentos subidos
+          </header>
+          <div class="card-block">
+            <p class="card-text">
+              <div class="container-fluid" style="max-height: 400px; overflow-y: scroll;">
+                  <% @teacher.documents.each do |doc|  %>
+                  <div class="row">
+                  <div class="col-sm-4">
+                    <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
+                  </div>
+                  <div class="col-sm-8">
+                    <div class="box-typical" style="padding: 10px;">
+                      <p>
+                        <%= doc.description %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                  <% end %>
+              </div>
+            </p>
+          </div>
+        </section>
+
+        <section class="card card-blue">
+          <header class="card-header" style="margin-bottom: 20px;">Últimos comentarios</header>
+          <% @teacher.ratings.last(5).each do |rating| %>
+          <% date = rating.created_at %>
+          <article class="comment-list-item">
+
+            <header class="comment-list-header">
+              <div class="user-card-row">
+                <div class="tbl-row">
+
+                  <div class="tbl-cell tbl-cell-photo">
+                      <%= link_to image_tag("pdf_icon.png"), document_path(rating.document) %>
+                  </div>
+
+                  <div class="tbl-cell">
+                    <p class="user-card-row-name"><a href="#" tabindex="0"><%=link_to rating.document.name, document_path(rating.document)%></a></p>
+                    <p class="user-card-row-status"><%=get_day(date.wday) + " " + date.mday.to_s + " de " + get_month(date.mon) + " de " + date.year.to_s%></p>
+                    <p class="user-card-row-status">
+                      <% for i in 1..rating.grade%>
+                      <span class="font-icon font-icon-star" style="color: #FFD700;"></span>
+                      <% end %>
+                    </p>
+
+                  </div>
+                </div>
+              </div>
+            </header>
+
+            <div class="text-block text-block-typical">
+              "<%= rating.comment%>"
+            </div>
+
+          </article>
+          <% end %>
+        </section>
+
+      </div>
     </div>
   </div>
 </div>

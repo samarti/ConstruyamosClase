@@ -14,7 +14,7 @@ class Teacher < ActiveRecord::Base
   has_many :documents
 
   def full_name
-    return self.first_name << " " << self.last_name
+    return self.first_name + " " + self.last_name
   end
 
   def get_rating
