@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   resources :documents
   resources :ratings
-  resources :teachers
+  resources :teachers do
+    resources :documents
+  end
 
   get 'welcome/index'
   root 'welcome#index'

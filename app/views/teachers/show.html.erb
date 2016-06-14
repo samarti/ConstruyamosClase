@@ -30,7 +30,7 @@
                   <div class="col-sm-8">
                     <div class="box-typical" style="padding: 10px;">
                       <p>
-                        <%= doc.description %>
+                        <%= doc.description.slice(0, 500) %><%="..." if doc.description.length > 500
                       </p>
                     </div>
                   </div>

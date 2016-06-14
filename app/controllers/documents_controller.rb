@@ -3,11 +3,15 @@ require 'json'
 class DocumentsController < ApplicationController
     before_action :set_document, only: [:show, :edit, :update, :destroy]
 
-    # GET /documents
-    # GET /documents.json
-    def index
-        @documents = Document.all
+  # GET /documents
+  # GET /documents.json
+  def index
+    if params[:teacher_id].present?
+      @documents = Teacher.find(params[:teacher_id]).documents
+    else
+      @documents = Document.all
     end
+  end
 
     # GET /documents/1
     # GET /documents/1.json
