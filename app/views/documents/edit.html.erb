@@ -1,8 +1,48 @@
 <div class="page-content">
-  <h1>Editing Document</h1>
+  <%= form_for @document do |f| %>
+  <div class="card">
+    <header class="card-header">
+      <!-- TODO: Upload image y arreglar tags-->
+      <h3>Edita tu documento</h3>
+    </header>
+    <div class="card-block">
 
-  <%= render 'form' %>
+      <div class="row">
+        <div class="col-sm-4" style="text-align: center;">
 
-  <%= link_to 'Show', @document %> |
-  <%= link_to 'Back', documents_path %>
+          <div class="card">
+            <header class="card-header">Nombre</header>
+            <div class="card-block">
+            <%=f.text_field :name, class: "form-control"%>
+            </div>
+          </div>
+
+          <div class="card">
+            <header class="card-header">Imagen</header>
+            <div class="card-block"><%= image_tag("pdf_icon.png") %></div>
+            <footer class="card-footer"><%=f.file_field :picture%></footer>
+          </div>
+
+        </div>
+
+        <div class="col-sm-8">
+          <div class="card">
+            <header class="card-header">Descripción</header>
+            <div class="card-block">
+              <%= f.text_area :description, class: "form-control", rows: "12" %>
+            </div>
+          </div>
+          <div class="card">
+            <header class="card-header">Tags</header>
+            <div class="card-block">
+              <%= f.text_area :tags, class: "tag-editor-hidden-src form-control", id: "tags-editor-textarea" %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <footer class="card-footer"><%= f.submit "Guardar cambios", class: "btn btn-rounded", id: "send-button", style: "margin: 0 45%;"%></footer>
+  </div>
+  <% end %>
 </div>
