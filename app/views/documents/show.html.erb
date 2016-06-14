@@ -22,11 +22,13 @@
 
 
       <div class="col-sm-9">
-        <section class="box-typical">
-          <header class="box-typical-header-sm">Descripción</header>
-          <p class="document-info-item">
+        <section class="card">
+          <header class="card-header">Descripción</header>
+          <div class="card-block">
+          <p class="card-text">
             <%= @document.description %>
           </p>
+        </div>
         </section>
 
         <% if !current_teacher %>
@@ -64,8 +66,9 @@
         <% end %>
         <% end %>
 
-        <section class="box-typical">
-          <header class="box-typical-header-sm">Comentarios</header>
+        <section class="card">
+          <header class="card-header">Comentarios</header>
+          <div class="card-block">
           <% @document.ratings_by_date.each do |rating| %>
           <% date = rating.created_at %>
           <article class="comment-list-item">
@@ -98,6 +101,7 @@
 
           </article>
           <% end %>
+        </div>
         </section>
 
       </div>

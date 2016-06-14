@@ -7,6 +7,7 @@
               <span class="lbl">Inicio</span>
             <% end %>
         </li>
+        <% if logged_in? %>
         <li class="purple with-sub">
             <span>
                 <i class="font-icon font-icon-pencil"></i>
@@ -42,4 +43,5 @@
                 <li><a href="ui-buttons.html"><span class="lbl">Nuevo</span></a></li>
             </ul>
         </li>
+        <% end %>
 </nav><!--.side-menu-->

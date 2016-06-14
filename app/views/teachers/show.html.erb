@@ -2,9 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
-        <section class="box-typical">
           <%= render :partial => "teachers/teachercard", :locals => {:teacher => @teacher} %>
-        </section>
 
         <% if current_teacher == @teacher %>
         <div class="col-sm-6 col-sm-offset-3" style="text-align: center;">
@@ -17,9 +15,9 @@
       </div>
       <div class="col-sm-9">
 
-        <section class="card card-blue">
+        <section class="card card">
           <header class="card-header">
-            Documentos subidos
+            <span class="label label-pill label-danger"><%=@teacher.documents.count %></span><%= " " + "Documento".pluralize(@teacher.documents.count) + " " + "subido".pluralize(@teacher.documents.count) %>
           </header>
           <div class="card-block">
             <p class="card-text">
@@ -44,7 +42,7 @@
           </div>
         </section>
 
-        <section class="card card-blue">
+        <section class="card card">
           <header class="card-header" style="margin-bottom: 20px;">Últimos comentarios</header>
           <% @teacher.ratings.last(5).each do |rating| %>
           <% date = rating.created_at %>
