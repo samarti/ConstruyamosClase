@@ -3,6 +3,7 @@ class Document < ActiveRecord::Base
   has_many :ratings
   has_and_belongs_to_many :subjects
   belongs_to :teacher
+  serialize :tags, JSON
 
   def getAverageStars
     sum = 0;
