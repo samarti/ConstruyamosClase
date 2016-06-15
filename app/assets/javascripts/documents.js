@@ -147,7 +147,7 @@ $(function () {
 var onReady = function() {
 
     // initialize bloodhound engine
-    var searchSelector = 'input.typeahead';
+    var searchSelector = '#typeahead-search-bar';
 
     var bloodhound = new Bloodhound({
         datumTokenizer: function (d) {
@@ -156,7 +156,7 @@ var onReady = function() {
         queryTokenizer: Bloodhound.tokenizers.whitespace,
 
         // sends ajax request to remote url where %QUERY is user input
-        remote: '/documents/typeahead/%QUERY',
+        remote: {url: '/typeahead/%QUERY', wildcard: '%QUERY'},
         limit: 50
     });
     bloodhound.initialize();
@@ -173,6 +173,7 @@ var onReady = function() {
         //console.debug('Suggestion clicked:', event, datum, name);
         window.location.href = '/documents/' + datum.id;
     });
+
 };
 
 $(onReady);

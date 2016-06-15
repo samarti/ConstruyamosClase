@@ -43,7 +43,7 @@ gem 'jscrollpane-rails'
 gem 'bootstrap-select-rails'
 gem 'bootstrap-tagsinput-rails'
 gem "font-awesome-rails"
-gem 'bootstrap-typeahead-rails'
+gem 'twitter-typeahead-rails'
 gem 'searchlight'
 
 source 'https://rails-assets.org' do
