@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   get 'logout'  => 'sessions#destroy'
 
-  get 'documents/typeahead/:query' => 'documents#typeahead'
+  get 'typeahead/:query' => 'documents#typeahead'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
