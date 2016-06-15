@@ -3,6 +3,7 @@ class Document < ActiveRecord::Base
   has_many :ratings
   has_and_belongs_to_many :subjects
   belongs_to :teacher
+  acts_as_taggable
   serialize :tags, JSON
 
   def getAverageStars

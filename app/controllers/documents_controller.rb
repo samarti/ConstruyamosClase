@@ -46,6 +46,7 @@ class DocumentsController < ApplicationController
 
     @document = Document.new(:description => document_params['description'], :url => params[:document][:url].original_filename,
                              :name => document_params['name'], :tags => document_params['tags'].split(/,/).to_json)
+    @document.tag_list.add(document_params['tags'].split(/,/))
 
     respond_to do |format|
       if @document.save
@@ -90,8 +91,16 @@ class DocumentsController < ApplicationController
   end
 
   def typeahead
+    search_results = []
     @search = DocumentSearch.new(typeahead: params[:query])
-    render json: @search.results
+
+    search_results += @search.results
+
+    Document.tagged_with(params[:query]).each do |doc|
+      search_results.push doc
+    end
+
+    render json: search_results
   end
 
   private

@@ -45,6 +45,7 @@ gem 'bootstrap-tagsinput-rails'
 gem "font-awesome-rails"
 gem 'twitter-typeahead-rails'
 gem 'searchlight'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

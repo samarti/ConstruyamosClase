@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614191848) do
+ActiveRecord::Schema.define(version: 20160615031349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,11 +43,6 @@ ActiveRecord::Schema.define(version: 20160614191848) do
     t.integer "level_id",    null: false
   end
 
-  create_table "documents_ratings", id: false, force: :cascade do |t|
-    t.integer "document_id", null: false
-    t.integer "rating_id",   null: false
-  end
-
   create_table "documents_subjects", id: false, force: :cascade do |t|
     t.integer "document_id", null: false
     t.integer "subject_id",  null: false
@@ -71,11 +66,6 @@ ActiveRecord::Schema.define(version: 20160614191848) do
   add_index "ratings", ["document_id"], name: "index_ratings_on_document_id", using: :btree
   add_index "ratings", ["teacher_id"], name: "index_ratings_on_teacher_id", using: :btree
 
-  create_table "ratings_teachers", id: false, force: :cascade do |t|
-    t.integer "teacher_id", null: false
-    t.integer "rating_id",  null: false
-  end
-
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -90,6 +80,26 @@ ActiveRecord::Schema.define(version: 20160614191848) do
     t.datetime "updated_at", null: false
     t.string   "icon"
   end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "teachers", force: :cascade do |t|
     t.string   "first_name"
