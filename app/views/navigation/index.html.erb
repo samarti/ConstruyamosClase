@@ -1,0 +1,23 @@
+<div class="page-content">
+	<section class="card card-blue">
+      <header class="card-header">
+        Categorías
+      </header>
+	  <div class="card-block">
+		  <div class="container-fluid">
+			  <div class="row">
+				  <div class="clearfix hidden-xxl-up"></div>
+				  <%  ((@categories.size / 2).to_i + 1).times do |i| %>
+				  <div class="col-xxl-3 col-md-6">
+					  <div class="row">
+					  <% 2.times do |j| %>
+						  <%= render 'subjectcard', :locals => { subject: @categories[2 * i - 2 + j], color: get_color_for_card(2 * i - 2 + j)}%>
+					  <% end %>
+					  </div><!--.row-->
+				  </div>
+				  <% end %>
+			  </div><!--.row-->
+		  </div>
+  		</div>
+    </section>
+</div>

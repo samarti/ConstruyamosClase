@@ -25,6 +25,11 @@
             </span>
             <ul>
                 <li><span class="lbl"> <%=link_to "Mi Material", teacher_documents_path(current_teacher)%></span></li>
+                <li>
+                    <%= link_to(navigation_index_path) do %>
+                      <span class="lbl">Navegar</span>
+                    <% end %>
+                </li>
                 <li><a href="chat-index.html"><span class="lbl">Material Favorito</span></a></li>
                 <li>
                     <%= link_to(new_document_path) do %>

@@ -6,11 +6,17 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    if params[:teacher_id].present?
-      @documents = Teacher.find(params[:teacher_id]).documents
-    else
-      @documents = Document.all
-    end
+      if params[:teacher_id].present?
+          @documents = Teacher.find(params[:teacher_id]).documents
+      else
+          @documents = Document.all
+      end
+
+      respond_to do |format|
+          format.html
+          format.xml { render :xml => @documents.to_xml() }
+          format.json { render :json => @documents.to_json() }
+      end
   end
 
     # GET /documents/1
