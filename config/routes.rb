@@ -18,7 +18,10 @@ Rails.application.routes.draw do
     get 'welcome/index'
     root 'welcome#index'
 
-    get 'typeahead/:query' => 'documents#typeahead'
+    get 'typeahead_doc/:query' => 'documents#typeahead_document'
+    get 'typeahead_tag/:query' => 'documents#typeahead_tag'
+
+    get 'documents/bytag/:tag' => 'documents#by_tag'
 
     get 'login' => 'sessions#new'
     post 'login' => 'sessions#create'

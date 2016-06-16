@@ -988,30 +988,56 @@ var onReady = function() {
     // initialize bloodhound engine
     var searchSelector = '#typeahead-search-bar';
 
-    var bloodhound = new Bloodhound({
-        datumTokenizer: function (d) {
-            return Bloodhound.tokenizers.whitespace(d.value);
-        },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
 
-        // sends ajax request to remote url where %QUERY is user input
-        remote: {url: '/typeahead/%QUERY', wildcard: '%QUERY'},
+    var docs = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: '/typeahead_doc/%QUERY',
+            wildcard:'%QUERY'},
         limit: 50
     });
-    bloodhound.initialize();
 
-    // initialize typeahead widget and hook it up to bloodhound engine
-    // #typeahead is just a text input
-    $(searchSelector).typeahead(null, {
-        displayKey: 'name',
-        source: bloodhound.ttAdapter()
+    var tags = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: '/typeahead_tag/%QUERY',
+            wildcard:'%QUERY'},
+        limit: 50
     });
+
+    $(searchSelector).typeahead(null,
+        {
+            name: 'documents',
+            display: 'name',
+            source: docs,
+            templates: {
+                header: '<h1 class="suggested-data">Documentos</h1>'
+            }
+        },
+        {
+            name: 'tags',
+            display: 'name',
+            source: tags,
+            templates: {
+                header: '<h1 class="suggested-data">Etiquetas</h1>'
+            }
+        });
 
     // this is the event that is fired when a user clicks on a suggestion
-    $(searchSelector).bind('typeahead:selected', function(event, datum, name) {
-        //console.debug('Suggestion clicked:', event, datum, name);
-        window.location.href = '/documents/' + datum.id;
+    $(searchSelector).bind('typeahead:select', function(event, datum) {
+        //para diferenciar si el elemento es un documento o un tag
+        //se supone que un documento tiene descripcion y un tag no.
+        //queda pendiente hacerlo de mejor manera
+        if(datum.description){
+            window.location.href = '/documents/' + datum.id;
+        }
+        else{
+            window.location.href = '/documents/bytag/' + datum.name;
+        }
     });
+
 
 };
 

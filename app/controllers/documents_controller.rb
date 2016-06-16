@@ -20,6 +20,13 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def by_tag
+    @documents = Document.tagged_with(params[:tag])
+    @tag = params[:tag]
+
+    render 'index'
+  end
+
   # GET /documents/1
   # GET /documents/1.json
   def show
@@ -90,17 +97,14 @@ class DocumentsController < ApplicationController
     params[:thing_search] || {}
   end
 
-  def typeahead
-    search_results = []
-    @search = DocumentSearch.new(typeahead: params[:query])
+  def typeahead_document
+    @document_search = DocumentSearch.new(typeahead: params[:query])
+    render json: @document_search.results
+  end
 
-    search_results += @search.results
-
-    Document.tagged_with(params[:query]).each do |doc|
-      search_results.push doc
-    end
-
-    render json: search_results
+  def typeahead_tag
+    @tag_search = TagSearch.new(typeahead: params[:query])
+    render json: @tag_search.results
   end
 
   private

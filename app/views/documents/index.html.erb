@@ -1,7 +1,8 @@
 <div class="page-content">
   <section class="card card">
     <header class="card-header">
-      <span class="label label-pill label-danger"><%=@documents.count %></span><%= " " + "Documento".pluralize(@documents.count) + " " + "subido".pluralize(@documents.count) %>
+      <span class="label label-pill label-danger"><%= @documents.count %></span>
+      <%= " " + "Documento".pluralize(@documents.count) + " " + "subido".pluralize(@documents.count) %><% if @tag %><%= ' con etiqueta ' + @tag %><% end %>
     </header>
     <div class="card-block">
       <p class="card-text">
