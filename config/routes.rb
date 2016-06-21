@@ -14,6 +14,13 @@ Rails.application.routes.draw do
     resources :ratings
     resources :teachers do
         resources :documents
+        member do
+          get 'add_level' => 'teachers#add_level'
+          get 'delete_level' => 'teachers#delete_level'
+
+          get 'add_subject' => 'teachers#add_subject'
+          get 'delete_subject' => 'teachers#delete_subject'
+        end
     end
 
     get 'welcome/index'

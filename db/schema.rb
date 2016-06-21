@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621164849) do
+
+ActiveRecord::Schema.define(version: 20160621224752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +67,11 @@ ActiveRecord::Schema.define(version: 20160621164849) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "levels_teachers", id: false, force: :cascade do |t|
+    t.integer "teacher_id", null: false
+    t.integer "level_id",   null: false
+  end
+
   create_table "ratings", force: :cascade do |t|
     t.integer  "grade"
     t.text     "comment"
@@ -96,6 +102,11 @@ ActiveRecord::Schema.define(version: 20160621164849) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "icon"
+  end
+
+  create_table "subjects_teachers", id: false, force: :cascade do |t|
+    t.integer "teacher_id", null: false
+    t.integer "subject_id", null: false
   end
 
   create_table "taggings", force: :cascade do |t|

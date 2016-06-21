@@ -52,6 +52,36 @@ class TeachersController < ApplicationController
     end
   end
 
+  def add_level
+    new_level = Level.find_by(name: params[:level])
+    current_teacher.levels << new_level unless current_teacher.levels.include?(new_level)
+    respond_to do |format|
+      format.json { render json: current_teacher.levels.order(id: :asc), status: :ok}
+    end
+  end
+
+  def delete_level
+    current_teacher.levels.destroy(params[:level])
+    respond_to do |format|
+      format.json { render json: current_teacher.levels.order(id: :asc), status: :ok}
+    end
+  end
+
+  def add_subject
+    new_subject = Subject.find_by(name: params[:subject])
+    current_teacher.subjects << new_subject unless current_teacher.subjects.include?(new_subject)
+    respond_to do |format|
+      format.json { render json: current_teacher.subjects.order(id: :asc), status: :ok}
+    end
+  end
+
+  def delete_subject
+    current_teacher.subjects.destroy(params[:subject])
+    respond_to do |format|
+      format.json { render json: current_teacher.subjects.order(id: :asc), status: :ok}
+    end
+  end
+
   private
   def set_teacher
     @teacher = Teacher.find(params[:id])
