@@ -57,12 +57,12 @@ $(document).ready(function(){
 	}
 
 	function nameFormatter(data){
-		var link = "http://" + window.location.host + "/documents/"
-		return '<div> <a href="' + link + '" type="button" class="btn btn-primary btn-sm">Ver</a>  ' + data + '</div>';
+		return '<div>' + data + '</div>';
 	}
 
 	function linkFormatter(data){
-		return '<div><a href="' + data + '">' + data + '</a> </div>';
+        var link = "http://" + window.location.host + data;
+		return '<div> <a href="' + link + '" type="button" class="btn btn-primary btn-sm">' + data.split('/').pop() + '</a></div>';
 	}
 
 
