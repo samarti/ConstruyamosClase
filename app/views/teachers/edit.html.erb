@@ -1,0 +1,57 @@
+<div class="page-content">
+  <%= form_for @teacher do |f| %>
+  <div class="card">
+    <header class="card-header">
+      <!-- TODO: Upload image y arreglar tags-->
+      <h3>Edita tu perfil</h3>
+    </header>
+    <div class="card-block">
+
+      <div class="row">
+        <div class="col-sm-6" style="text-align: center;">
+
+          <div class="card">
+            <header class="card-header">Nombre</header>
+            <div class="card-block">
+              <%=f.text_field :first_name, class: "form-control", placeholder: "Ingresa tu nombre"%>
+            </div>
+          </div>
+
+          <div class="card">
+            <header class="card-header">Apellidos</header>
+            <div class="card-block">
+              <%=f.text_field :last_name, class: "form-control", placeholder: "Ingresa tus apellidos"%>
+            </div>
+          </div>
+
+          <div class="card">
+            <header class="card-header">Imagen</header>
+            <div class="card-block"><%= image_tag(@teacher.profile_picture) %></div>
+            <footer class="card-footer"><%=f.file_field :profile_picture, placeholder: "Sube tu foto"%></footer>
+          </div>
+
+        </div>
+
+        <div class="col-sm-6">
+          <div class="card">
+            <header class="card-header">Email</header>
+            <div class="card-block">
+              <%=f.text_field :email, class: "form-control", placeholder: "Introduce tu email"%>
+            </div>
+          </div>
+
+          <div class="card">
+            <header class="card-header">Contraseña</header>
+            <div class="card-block">
+              <p><%=f.password_field :password, class: "form-control", placeholder: "Introduce tu contraseña"%></p>
+              <p><%=f.password_field :password_confirmation, class: "form-control", placeholder: "Repite tu contraseña"%></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <footer class="card-footer"><%= f.submit "Guardar cambios", class: "btn btn-rounded", id: "send-button", style: "margin: 0 45%;"%></footer>
+  </div>
+  <% end %>
+</div>
