@@ -14,6 +14,8 @@ class Teacher < ActiveRecord::Base
   has_many :ratings
   has_many :courses
   has_many :documents
+  has_and_belongs_to_many :levels
+  has_and_belongs_to_many :subjects
 
   def full_name
     return self.first_name + " " + self.last_name
