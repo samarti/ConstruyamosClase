@@ -1,3 +1,5 @@
+require 'json'
+
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
@@ -7,8 +9,22 @@ class DocumentsController < ApplicationController
     if params[:teacher_id].present?
       @documents = Teacher.find(params[:teacher_id]).documents
     else
-      @documents = Document.all
+      @search = DocumentSearch.new(search_params)
+      @documents = search_params.present? ? @search.results : Document.all
     end
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @documents.to_xml() }
+      format.json { render :json => @documents.to_json() }
+    end
+  end
+
+  def by_tag
+    @documents = Document.tagged_with(params[:tag])
+    @tag = params[:tag]
+
+    render 'index'
   end
 
   # GET /documents/1
@@ -21,6 +37,7 @@ class DocumentsController < ApplicationController
     @document = Document.new
   end
 
+
   # GET /documents/1/edit
   def edit
   end
@@ -28,7 +45,15 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
+#raw("<i class='font-icon font-icon-cloud-upload-2 dz-default dz-message'></i><div class='drop-zone-caption dz-default dz-message'>Drag file to upload</div>")
+    name = params[:document][:url].original_filename
+    directory = "public/images/upload"
+    path = File.join(directory, name)
+    File.open(path, "wb") { |f| f.write(params[:document][:url].read) }
+
+    @document = Document.new(:description => document_params['description'], :url => params[:document][:url].original_filename,
+                             :name => document_params['name'], :tags => document_params['tags'].split(/,/).to_json)
+    @document.doc_tag_list.add(document_params['tags'].split(/,/))
 
     respond_to do |format|
       if @document.save
@@ -68,6 +93,20 @@ class DocumentsController < ApplicationController
   def add_rating
   end
 
+  def search_params
+    params[:thing_search] || {}
+  end
+
+  def typeahead_document
+    @document_search = DocumentSearch.new(typeahead: params[:query])
+    render json: @document_search.results
+  end
+
+  def typeahead_tag
+    @tag_search = TagSearch.new(typeahead: params[:query])
+    render json: @tag_search.results
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_document
@@ -78,4 +117,5 @@ class DocumentsController < ApplicationController
   def document_params
     params.fetch(:document, {})
   end
+
 end

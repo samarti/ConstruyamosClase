@@ -982,3 +982,63 @@ $(document).ready(function(){
 
 /* ========================================================================== */
 });
+
+var onReady = function() {
+
+    // initialize bloodhound engine
+    var searchSelector = '#typeahead-search-bar';
+
+
+    var docs = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: '/typeahead_doc/%QUERY',
+            wildcard:'%QUERY'},
+        limit: 50
+    });
+
+    var tags = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+            url: '/typeahead_tag/%QUERY',
+            wildcard:'%QUERY'},
+        limit: 50
+    });
+
+    $(searchSelector).typeahead(null,
+        {
+            name: 'documents',
+            display: 'name',
+            source: docs,
+            templates: {
+                header: '<h1 class="suggested-data">Documentos</h1>'
+            }
+        },
+        {
+            name: 'tags',
+            display: 'name',
+            source: tags,
+            templates: {
+                header: '<h1 class="suggested-data">Etiquetas</h1>'
+            }
+        });
+
+    // this is the event that is fired when a user clicks on a suggestion
+    $(searchSelector).bind('typeahead:select', function(event, datum) {
+        //para diferenciar si el elemento es un documento o un tag
+        //se supone que un documento tiene descripcion y un tag no.
+        //queda pendiente hacerlo de mejor manera
+        if(datum.description){
+            window.location.href = '/documents/' + datum.id;
+        }
+        else{
+            window.location.href = '/documents/bytag/' + datum.name;
+        }
+    });
+
+
+};
+
+$(onReady);

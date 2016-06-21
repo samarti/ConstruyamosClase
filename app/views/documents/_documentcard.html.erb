@@ -2,8 +2,10 @@
   <div class="document-card">
     <div class="document-card-image"><%= link_to image_tag("pdf_icon.png"), document_path(doc)%></div>
     <div class="document-card-title"><%=doc.name%></div>
+    <% if !doc.teacher.nil? %>
     <div class="document-card-owner"><%=link_to doc.teacher.full_name, teacher_path(doc.teacher)%></div>
     <div class="document-card-owner-mail"><%=doc.teacher.email%></div>
+    <% end %>
     <div class="document-card-date"><%=doc.updated_at.strftime("%d/%m/%Y") %></div>
   </div>
   <div class="document-statistic tbl">

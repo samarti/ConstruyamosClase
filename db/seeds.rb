@@ -6,8 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'json'
+
 default_url = "http://www.google.cl"
 randomizer = Random.new
+tags = %w[matematicas lenguaje fisica quimica biologia musica historia]
 
 for i in 1..100
   Teacher.create({first_name: "Profesor #{i}", last_name: "Diaz #{i}", email: "samarti#{i}@uc.cl", password:"#{100000+i}", profile_picture: "http://findicons.com/files/icons/1580/devine_icons_part_2/128/account_and_control.png"})
@@ -21,7 +24,12 @@ Subject.create([{name:"Matemáticas"}, {name:"Lenguaje"}, {name:"Historia"}, {na
   {name:"Deportes"}, {name:"Geografía"}, {name:"Inglés"}, {name:"Francés"}, {name:"Alemán"}])
 
 for i in 1..25
-  document = Document.create({average_rating: 0, url: default_url, name: "Documento #{i}", description: "Este es el documento número #{i} y te dice Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."})
+  document = Document.new({average_rating: 0, url: default_url, name: "Documento #{i}", description: "Este es el documento número #{i} y te dice Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."})
+  doc_tags = tags.sample(randomizer.rand(1..tags.size))
+  document.doc_tag_list.add(doc_tags)
+  #document.tags = doc_tags.to_json
+  document.save
+
   max = randomizer.rand(1..15)
   for j in 1..max
     r = randomizer.rand(1..5)

@@ -1,0 +1,14 @@
+<div class="col-xs-6">
+	<%= link_to documents_navigation_path(locals[:subject]) do %>
+	<section class="widget widget-simple-sm-fill <%= locals[:color]%>">
+		<div class="widget-simple-sm-icon">
+		<% if !locals[:subject].nil? %>
+			<i class="font-icon card-title"><%= locals[:subject].name[0..1] %></i>
+		<% else %>
+			<i class="font-icon fa <%= locals[:subject].icon %>"></i>
+		<% end %>
+		</div>
+		<div class="widget-simple-sm-fill-caption"><%= locals[:subject].name %></div>
+	</section>
+	<% end %>
+</div><!--.widget-simple-sm-fill-->

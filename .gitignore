@@ -19,6 +19,7 @@ config/secrets.yml
 
 .idea/
 /public/assets
+/public/images
 /lib/assets/bower_components
 ## Environment normalization:
 /.bundle

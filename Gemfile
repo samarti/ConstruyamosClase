@@ -41,6 +41,11 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'fancybox2-rails', '~> 0.2.8'
 gem 'jscrollpane-rails'
 gem 'bootstrap-select-rails'
+gem 'bootstrap-tagsinput-rails'
+gem "font-awesome-rails"
+gem 'twitter-typeahead-rails'
+gem 'searchlight'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
@@ -60,4 +65,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

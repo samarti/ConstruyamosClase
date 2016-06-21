@@ -1,17 +1,88 @@
 <%= form_for(@document) do |f| %>
-  <% if @document.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+    <div class="form-section">
+        <header class="steps-numeric-title">Archivo</header>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="box-typical-upload" style="height: inherit">
+                            <%= f.file_field :url, :class => 'btn btn-rounded', :id => 'selectFile'%>
+                        </div>
+        				<div style="display: none"class="uploadAlert alert alert-danger alert-icon alert-close alert-dismissible fade in" role="alert">
+        					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        						<span aria-hidden="true">×</span>
+        					</button>
+        					<i class="font-icon font-icon-warning"></i>
+        					Debe seleccionar un archivo
+        				</div>
+                    </div><!--.col-->
+                </div><!--.row-->
+            </div>
+        </div>
 
-      <ul>
-      <% @document.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
     </div>
-  <% end %>
+    <div class="form-section">
+        <header class="steps-numeric-title">Detalles</header>
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">Nombre*</label>
+            <div class="col-sm-10">
+                <p class="form-control-static"><%= f.text_field :name , :class => 'form-control', :style => 'max-width: none', :placeholder => 'Nombre*', :id => 'name'%></p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">Palabras Clave*</label>
+            <div class="col-sm-10">
+                <p class="form-control-static"><%= f.text_field :tags , 'data-role'=>'tagsinput', :class => 'form-control', :placeholder => 'Palabras Clave*', :id => 'tags' %></p>
+            </div>
+        </div>
+    </div>
+    <div class="form-section">
+        <header class="steps-numeric-title">Descripción</header>
+        <div class="form-group col-xl-12">
+            <%= f.text_area :description , :style => 'max-width: none', :rows => 4 , :class => 'form-control', :placeholder => 'Ingrese descripción...', :id => 'description'%>
+        </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="form-section">
+        <header class="steps-numeric-title">Confirmación</header>
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">Nombre Archivo:</label>
+            <div class="col-sm-10">
+                <input disabled style='max-width: none' class="form-control form-control-blue-fill" value="" id="fileNameRev"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">Nombre:</label>
+            <div class="col-sm-10">
+                <input disabled style='max-width: none' class="form-control form-control-blue-fill" value="" id="nameRev"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">Palabras Clave:</label>
+            <div class="col-sm-10">
+                <%= f.text_field :tags , :disabled => true, 'data-role'=>'tagsinput', :style => 'max-width: none', :class => 'form-control form-control-blue-fill', :id => 'tagsRev' %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 form-control-label">Descripción:</label>
+            <div class="col-sm-10">
+                <%= f.text_area :description , :disabled => true,  :style => 'max-width: none', :style => 'max-width: none', :rows => 4 , :class => 'form-control form-control-blue-fill', :id => 'descriptionRev'%>
+            </div>
+        </div>
+
+        <div class="actions">
+           <%= f.submit 'Confirmar' , :class => 'submit btn btn-rounded btn-success float-right' %>
+        </div>
+    </div>
 <% end %>
+<div style="display: none" class="fieldMissingAlert alert alert-danger alert-icon alert-close alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <i class="font-icon font-icon-warning"></i>
+    Campos faltantes
+</div>
+<div class="form-navigation">
+    <button type="button" class="previous btn btn-rounded btn-grey float-left">← Atrás</button>
+    <button type="button" class="next btn btn-rounded float-right">Siguiente →</button>
+</div>

@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *
+ *= require font-awesome
  */
 
  .comment-list-header{
@@ -23,7 +24,7 @@
      margin: 0 15px 25px 0;
      border-bottom: 1px solid #ebebeb;
  }
- 
+
 @import '../../../vendor/assets/javascripts/bower_components/bootstrap-select/less/bootstrap-select';
 @import '../../../vendor/assets/javascripts/bower_components/bootstrap-sweetalert/lib/sweet-alert';
 @import '../../../vendor/assets/javascripts/bower_components/bootstrap-sweetalert/lib/sweet-alert-combine';
@@ -81,6 +82,7 @@
 @import 'pages/others';
 
 
+
 @font-face {
 	font-family: 'StartUI';
 	src: url('/assets/startui.eot');
@@ -88,18 +90,6 @@
 	url('/assets/startui.woff') format('woff'),
 	url('/assets/startui.ttf') format('truetype'),
 	url('/assets/startui.svg#startui') format('svg');
-	font-style: normal;
-	font-weight: 400;
-}
-
-@font-face {
-	font-family: 'FontAwesome';
-	src: url('/assets/fontawesome-webfont.eot');
-	src: url('/assets/fontawesome-webfont.eot') format('embedded-opentype'),
-	url('/assets/fontawesome-webfont.woff2') format('woff2'),
-	url('/assets/fontawesome-webfont.woff') format('woff'),
-	url('/assets/fontawesome-webfont.ttf') format('truetype'),
-	url('/assets/fontawesome-webfont.svg#fontawesome-webfont') format('svg');
 	font-style: normal;
 	font-weight: 400;
 }
@@ -239,4 +229,46 @@
 
 .document-statistic .tbl-cell:last-child{
   border-right: none;
+}
+
+.tt-menu{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  min-width: 160px;
+  padding: 0;
+  margin: 6px 0 0;
+  list-style: none;
+  font-size: 1rem;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #d8e2e7;
+  border-radius: .25rem;
+  background-clip: padding-box;
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  line-height: 24px;
+}
+
+.tt-suggestion.tt-cursor,.tt-suggestion:hover {
+  color: #fff;
+  background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+.tt-dataset h1 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 20px 5px 20px;
+  padding: 3px 0;
+  padding-top: 8px;
+  border-bottom: 1px solid #ccc;
 }
