@@ -66,6 +66,11 @@ ActiveRecord::Schema.define(version: 20160615031349) do
   add_index "ratings", ["document_id"], name: "index_ratings_on_document_id", using: :btree
   add_index "ratings", ["teacher_id"], name: "index_ratings_on_teacher_id", using: :btree
 
+  create_table "ratings_teachers", id: false, force: :cascade do |t|
+    t.integer "teacher_id", null: false
+    t.integer "rating_id",  null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
