@@ -30,6 +30,15 @@ class DocumentsController < ApplicationController
   # GET /documents/1
   # GET /documents/1.json
   def show
+    current_teacher
+  end
+
+  def favorites
+    current_teacher
+    @documents = @current_teacher.favorite_documents
+    @favorites = true
+
+    render 'index'
   end
 
   # GET /documents/new

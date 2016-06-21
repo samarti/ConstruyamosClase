@@ -120,5 +120,31 @@ $(function () {
 
     $(document).ready(ready);
     $(document).on('page:load', ready);
+
+});
+
+$(function(){
+    var $btn = $('#add-to-favorites');
+    var doc_id = $('#document-info').data('docId');
+    var $icon = $('.font-icon-heart');
+    console.log(doc_id);
+
+    $btn.on('click', function(ev){
+        $.ajax({
+            url: "/addfavorite/"+doc_id,
+            success : function(data){
+                if(data.message === 'LIKED'){
+                    $icon.removeClass('unliked');
+                    $icon.addClass('liked')
+                }
+                else {
+                    $icon.removeClass('liked');
+                    $icon.addClass('unliked');
+                }
+            }
+        });
+    });
+
+
 });
 

@@ -19,6 +19,25 @@ class TeachersController < ApplicationController
   def show
   end
 
+
+  def add_favorite
+    respond_message = 'LIKED'
+    doc = Document.find(params[:id])
+    current_teacher
+    if(@current_teacher.favorite_documents.find_by(id: doc.id))
+      @current_teacher.favorite_documents.delete(doc)
+      respond_message = 'DISLIKED'
+    else
+      @current_teacher.favorite_documents << doc
+    end
+
+    respond_to do |format|
+      format.json {
+        render :json => {:message => "#{respond_message}"}
+      }
+    end
+  end
+
   private
   def set_teacher
     @teacher = Teacher.find(params[:id])
