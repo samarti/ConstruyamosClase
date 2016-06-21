@@ -13,14 +13,14 @@
           <div class="card">
             <header class="card-header">Nombre</header>
             <div class="card-block">
-            <%=f.text_field :name, class: "form-control"%>
+              <%=f.text_field :name, class: "form-control"%>
             </div>
           </div>
 
           <div class="card">
-            <header class="card-header">Imagen</header>
-            <div class="card-block"><%= image_tag("pdf_icon.png") %></div>
-            <footer class="card-footer"><%=f.file_field :picture%></footer>
+            <header class="card-header">Archivo</header>
+            <div class="card-block"><%= image_tag("pdf_icon.png") %> <%= @document.url %></div>
+            <footer class="card-footer" style="overflow: hidden;"><%= f.file_field :url %></footer>
           </div>
 
         </div>
@@ -32,17 +32,19 @@
               <%= f.text_area :description, class: "form-control", rows: "12" %>
             </div>
           </div>
+
           <div class="card">
             <header class="card-header">Tags</header>
             <div class="card-block">
-              <%= f.text_area :tags, class: "tag-editor-hidden-src form-control", id: "tags-editor-textarea" %>
+              <%= f.text_field :tags, 'data-role'=>'tagsinput', class: "form-control tags-on-edit", id: "tags"%>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
+      <footer class="card-footer"><%= f.submit "Guardar cambios", class: "btn btn-rounded", id: "send-button", style: "margin: 0 45%;"%></footer>
     </div>
-    <footer class="card-footer"><%= f.submit "Guardar cambios", class: "btn btn-rounded", id: "send-button", style: "margin: 0 45%;"%></footer>
   </div>
   <% end %>
 </div>
+<%= javascript_include_tag 'product/fileinput.js' %>
