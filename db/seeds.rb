@@ -26,7 +26,7 @@ Subject.create([{name:"Matemáticas"}, {name:"Lenguaje"}, {name:"Historia"}, {na
 for i in 1..25
   document = Document.new({average_rating: 0, url: default_url, name: "Documento #{i}", description: "Este es el documento número #{i} y te dice Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."})
   doc_tags = tags.sample(randomizer.rand(1..tags.size))
-  document.tag_list.add(doc_tags)
+  document.doc_tag_list.add(doc_tags)
   #document.tags = doc_tags.to_json
   document.save
 

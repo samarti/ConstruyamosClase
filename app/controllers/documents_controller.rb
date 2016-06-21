@@ -53,7 +53,7 @@ class DocumentsController < ApplicationController
 
     @document = Document.new(:description => document_params['description'], :url => params[:document][:url].original_filename,
                              :name => document_params['name'], :tags => document_params['tags'].split(/,/).to_json)
-    @document.tag_list.add(document_params['tags'].split(/,/))
+    @document.doc_tag_list.add(document_params['tags'].split(/,/))
 
     respond_to do |format|
       if @document.save
