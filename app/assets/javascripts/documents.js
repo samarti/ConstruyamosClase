@@ -12,7 +12,7 @@ You can use CoffeeScript in this file: http://coffeescript.org/
 $(function () {
     var $sections = $('.form-section');
 
-    var uploaded = false;
+    var selected = false;
     //Hide all the initial forms but the first
     let isFirst = true;
 
@@ -38,24 +38,31 @@ $(function () {
         $('.form-navigation [type=submit]').toggle(atTheEnd);
         var i = 0;
         $('.steps li').each(function(){
-            if(i === index){
+            if(i === index)
                 $(this).addClass('active');
-            }
             if(i > index)
                 $(this).removeClass('active');
             i++;
         });
     }
 
+    $("#selectFile").change(function(){
+        selected = true;
+    });
+
     function checkStep(step){
         switch (step) {
+            case 0:
+                return selected;
             case 1:
                 return $('#tags').val().length > 0 &&
-                    $('#name').val().length > 0;
+                    $('#name').val().length > 0 &&
+                    $('#level').val().length > 0 &&
+                    $('#subject').val().length > 0;
             case 2:
                 return $('#description').val().length > 0;
             default:
-                return true;
+                return false;
 
         }
     }
@@ -67,54 +74,22 @@ $(function () {
     // Next button goes forward iff current block validates
     $('.form-navigation .next').click(function() {
         updateReviewContent();
-        if(curIndex() == 0 && uploaded){
+        if(checkStep(curIndex())){
+            dismissError();
             navigateTo(curIndex() + 1);
-        } else if(curIndex() == 0 && !uploaded){
-            //$('.uploadAlert').css('display', 'inline')
-            navigateTo(curIndex() + 1);
-        } else {
-            if(checkStep(curIndex())){
-                dismissError();
-                navigateTo(curIndex() + 1);
-            } else {
-                showError();
-            }
-        }
-
+        } else
+            showError();
     });
 
     navigateTo(0);
-
-    //Dropzone
-    Dropzone.autoDiscover = false;
-    $("#dZUpload").dropzone({
-        url: "hn_SimpeFileUploader.ashx",
-        addRemoveLinks: true,
-        maxFiles: 1,
-        init: function() {
-            this.on("addedfile", function() {
-                if (this.files[1]!=null){
-                    this.removeFile(this.files[0]);
-                }
-            });
-        },
-        success: function (file, response) {
-            var imgName = response;
-            file.previewElement.classList.add("dz-success");
-            console.log("Successfully uploaded :" + imgName);
-            uploaded = true;
-        },
-        error: function (file, response) {
-            file.previewElement.classList.add("dz-error");
-            uploaded = true;
-        },
-    });
 
     //Update review content
     function updateReviewContent(){
         $('#nameRev').val($('#name').val());
         $('#fileNameRev').val($('#selectFile').val());
         $('#descriptionRev').val($('#description').val());
+        $('#subjectRev').val($('#subject option:selected').text());
+        $('#levelRev').val($('#level option:selected').text());
         $('.bootstrap-tagsinput').last().prop('disabled', true);
         $('.bootstrap-tagsinput').last().empty()
         $('.bootstrap-tagsinput').first().children().filter('span').clone().appendTo($('.bootstrap-tagsinput').last());
@@ -122,11 +97,14 @@ $(function () {
 
     //Errors
     function showError(){
-        $('.fieldMissingAlert').css('display', 'inline');
+        var alert = "<div class=\"fieldMissingAlert alert alert-danger alert-icon alert-close alert-dismissible fade in\" role=\"alert\">\r\n            <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\r\n                <span aria-hidden=\"true\">\u00D7<\/span>\r\n            <\/button>\r\n            <i class=\"font-icon font-icon-warning\"><\/i>\r\n            Campos faltantes\r\n        <\/div>";
+        var node = $('#missing-fields-alert');
+        if(node.children().length == 0)
+            node.html(alert);
     }
 
     function dismissError(){
-        $('.fieldMissingAlert').css('display', 'none');
+        $('#missing-fields-alert').empty();
     }
 
     function showWarning(){

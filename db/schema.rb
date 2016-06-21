@@ -67,6 +67,11 @@ ActiveRecord::Schema.define(version: 20160505162500) do
     t.integer "rating_id",  null: false
   end
 
+  create_table "ratings_teachers", id: false, force: :cascade do |t|
+    t.integer "teacher_id", null: false
+    t.integer "rating_id",  null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"

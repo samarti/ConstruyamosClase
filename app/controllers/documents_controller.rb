@@ -26,24 +26,27 @@ class DocumentsController < ApplicationController
     # POST /documents
     # POST /documents.json
     def create
-#raw("<i class='font-icon font-icon-cloud-upload-2 dz-default dz-message'></i><div class='drop-zone-caption dz-default dz-message'>Drag file to upload</div>")
         name = params[:document][:url].original_filename
         directory = "public/images/upload"
         path = File.join(directory, name)
-        File.open(path, "wb") { |f| f.write(params[:document][:url].read) }
+        File.open(path, "wb") { |f| f.write(params[:document][:url].read) };
 
         @document = Document.new(:description => document_params['description'], :url => params[:document][:url].original_filename,
-        :name => document_params['name'], :tags => document_params['tags'].split(/,/).to_json)
-
+                                 :name => document_params['name'], :tags => document_params['tags'].split(/,/).to_json)
+        @document.doc_tag_list.add(document_params['tags'].split(/,/))
+        binding.pry
+        Teacher.find(current_teacher).documents << @document
+        @document.levels << Level.find(params['post']['level'])
+        @document.subjects << Subject.find(params['post']['subject'])
         respond_to do |format|
-            if @document.save
-                format.html { redirect_to @document, notice: 'Document was successfully created.' }
-                format.json { render :show, status: :created, location: @document }
-            else
-                format.html { render :new }
-                format.json { render json: @document.errors, status: :unprocessable_entity }
-            end
-        end
+          if @document.save
+            format.html { redirect_to @document, notice: 'Document was successfully created.' }
+            format.json { render :show, status: :created, location: @document }
+          else
+            format.html { render :new }
+            format.json { render json: @document.errors, status: :unprocessable_entity }
+          end
+      end
     end
 
     # PATCH/PUT /documents/1
