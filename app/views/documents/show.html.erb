@@ -2,8 +2,29 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
+        <div id="document-info" data-doc-id="<%=@document.id%>" style="display: none">
+        </div>
         <section class="box-typical">
           <%= render :partial => "documents/documentcard", :locals => {:doc => @document} %>
+
+          <div class="document-card">
+            <div class="btn-group btn-group-lg" role="group" aria-label="acciones">
+              <button id="add-to-favorites" type="button" class="btn btn-default-outline">
+                <%if current_teacher.favorite_documents.find_by(id: @document.id)%>
+                    <span class="font-icon font-icon-heart liked"></span>
+                <%else%>
+                    <span class="font-icon font-icon-heart unliked"></span>
+                <%end%>
+              </button>
+              <button type="button" class="btn btn-default-outline">
+                <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default-outline">
+                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
           <div class="tag-container">
             <div class="tag"><%=@document.levels.first.name%></div>
             <div class="tag"><%=@document.subjects.first.name%></div>
