@@ -44,15 +44,14 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-      name = params[:document][:url].original_filename
+      hash = (0...10).map { ('a'..'z').to_a[rand(26)] }.join
+      name = "#{hash}_#{params[:document][:url].original_filename}"
       directory = "public/images/upload"
       path = File.join(directory, name)
       File.open(path, "wb") { |f| f.write(params[:document][:url].read) };
-
-      @document = Document.new(:description => document_params['description'], :url => params[:document][:url].original_filename,
+      @document = Document.new(:description => document_params['description'], :url => path[6, path.length],
       :name => document_params['name'], :tags => document_params['tags'].split(/,/).to_json)
       @document.doc_tag_list.add(document_params['tags'].split(/,/))
-      binding.pry
       Teacher.find(current_teacher).documents << @document
       @document.levels << Level.find(params['post']['level'])
       @document.subjects << Subject.find(params['post']['subject'])
