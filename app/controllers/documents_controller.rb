@@ -61,9 +61,15 @@ class DocumentsController < ApplicationController
       @document = Document.new(:description => document_params['description'], :url => path[6, path.length],
       :name => document_params['name'], :tags => document_params['tags'].split(/,/).to_json)
       @document.doc_tag_list.add(document_params['tags'].split(/,/))
+      level = Level.find(params['post']['level'])
+      subject = Subject.find(params['post']['subject'])
+      @document.doc_tag_list.add(level.name)
+      @document.doc_tag_list.add(subject.name)
       Teacher.find(current_teacher).documents << @document
-      @document.levels << Level.find(params['post']['level'])
-      @document.subjects << Subject.find(params['post']['subject'])
+      @document.levels << level
+      @document.subjects << subject
+
+
       respond_to do |format|
           if @document.save
               format.html { redirect_to @document, notice: 'Document was successfully created.' }
