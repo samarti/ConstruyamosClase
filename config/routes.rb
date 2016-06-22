@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
     get 'documents/favorites' => 'documents#favorites'
 
     get 'signup' => 'teachers#new'
@@ -9,6 +8,9 @@ Rails.application.routes.draw do
     resources :navigation, only: [:index] do
         get 'documents', on: :member
     end
+
+    resources :levels, only: [:index], :path => 'my_levels'
+    resources :subjects, only: [:index],:path => 'my_subjects'
 
     resources :documents
     resources :ratings
