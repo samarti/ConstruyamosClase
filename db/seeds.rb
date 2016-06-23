@@ -12,10 +12,10 @@ default_url = "http://www.google.cl"
 randomizer = Random.new
 tags = %w[matematicas lenguaje fisica quimica biologia musica historia]
 nombres = %w[Esteban Javier Santiago Alfonso Adrian Monica Macarena Evelyn Sasha Elisa Mijal]
-apellidos = %w[Dib Marti Diaz Perez Soto Rodriguez Gonzalez]
+apellidos = %w[Dib Marti Diaz Perez Soto Rodriguez Gonzalez Maturana Budnik Muñoz Huerta]
 
 
-for i in 1..20
+for i in 1..10
   nombre = nombres.sample
   nombres.delete(nombre)
   apellido = apellidos.sample
@@ -40,13 +40,13 @@ Subject.create([{name:"Matemáticas"}, {name:"Lenguaje"}, {name:"Historia"}, {na
 #  max = randomizer.rand(1..15)
 #  for j in 1..max
 #    r = randomizer.rand(1..5)
-#    teacher = randomizer.rand(1..100)
+#    teacher = randomizer.rand(1..9)
 #    rating = Rating.new({grade: r, comment: "Este documento me gustó mucho, pero la verdad es que le falta un poco de profundidad"})
 #    Teacher.find(teacher).ratings << rating
 #    document.ratings << rating
-#    rating.save
+#    rating.save#
 #  end
-#  teacher = randomizer.rand(1..100)
+#  teacher = randomizer.rand(1..9)
 #  level = Level.find(randomizer.rand(1..14))
 #  subject = Subject.find(randomizer.rand(1..12))
 #  document.doc_tag_list.add(level.name)
