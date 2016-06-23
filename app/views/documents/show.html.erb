@@ -2,11 +2,39 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
+        <div id="document-info" data-doc-id="<%=@document.id%>" style="display: none">
+        </div>
         <section class="box-typical">
           <%= render :partial => "documents/documentcard", :locals => {:doc => @document} %>
+
+          <div class="document-card">
+            <div class="btn-group btn-group-lg" role="group" aria-label="acciones">
+              <button id="add-to-favorites" type="button" class="btn btn-default-outline">
+                <%if current_teacher.favorite_documents.find_by(id: @document.id)%>
+                    <span class="font-icon font-icon-heart liked"></span>
+                <%else%>
+                    <span class="font-icon font-icon-heart unliked"></span>
+                <%end%>
+              </button>
+
+              <a href="<%=request.base_url + @document.url%>"
+                 type="button"
+                 class="btn btn-default-outline"
+                 target="_blank" download="<%=@document.url%>">
+                <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+              </a>
+
+              <a href="<%=request.base_url + @document.url%>"
+                 type="button"
+                 class="btn btn-default-outline"
+                 target="_blank" >
+                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+              </a>
+
+            </div>
+          </div>
+
           <div class="tag-container">
-            <div class="tag"><%=@document.levels.first.name%></div>
-            <div class="tag"><%=@document.subjects.first.name%></div>
             <% @document.doc_tag_list.each do |tag| %>
             <div class="tag"><%=tag%></div>
             <% end %>

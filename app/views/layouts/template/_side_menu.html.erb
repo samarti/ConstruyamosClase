@@ -14,8 +14,16 @@
                 <span class="lbl">Cursos</span>
             </span>
             <ul>
-                <li><a href="chat-write.html"><span class="lbl">Mis Cursos</span></a></li>
-                <li><a href="chat-index.html"><span class="lbl">Cursos Favoritos</span></a></li>
+                <li>
+                    <%= link_to(levels_path) do %>
+                      <span class="lbl">Mis Cursos</span>
+                    <% end %>
+                </li>
+                <li>
+                    <%= link_to(subjects_path) do %>
+                      <span class="lbl">Mis Materias</span>
+                    <% end %>
+                </li>
             </ul>
         </li>
         <li class="blue-dirty with-sub">
@@ -30,7 +38,11 @@
                       <span class="lbl">Navegar</span>
                     <% end %>
                 </li>
-                <li><a href="chat-index.html"><span class="lbl">Material Favorito</span></a></li>
+                <li>
+                  <%= link_to documents_favorites_path do %>
+                      <span class="lbl">Material Favorito</span>
+                  <% end %>
+                </li>
                 <li>
                     <%= link_to(new_document_path) do %>
                       <span class="lbl">Subir Material</span>
