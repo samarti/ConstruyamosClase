@@ -1,6 +1,6 @@
 class Document < ActiveRecord::Base
   has_and_belongs_to_many :levels
-  has_many :ratings
+  has_many :ratings, dependent: :delete_all
   has_and_belongs_to_many :subjects
   belongs_to :teacher
   acts_as_taggable_on :doc_tags

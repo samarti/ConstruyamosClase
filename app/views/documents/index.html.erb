@@ -12,9 +12,14 @@
             <div class="col-sm-3">
               <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
               <% if current_teacher == doc.teacher %>
-              <div class="col-sm-6 col-sm-offset-3" style="text-align: center;">
+              <div class="col-sm-6">
                 <section class="box-typical">
-                  <header class="box-typical-header-sm"><%= link_to "Editar", edit_document_path(doc) %></header>
+                  <header class="box-typical-header-sm document-link"><%= link_to "Editar", edit_document_path(doc) %></header>
+                </section>
+              </div>
+              <div class="col-sm-6">
+                <section class="box-typical" >
+                  <header class="box-typical-header-sm document-link"><%= link_to "Eliminar", document_path(doc), method: :delete, style: "color: red;" %></header>
                 </section>
               </div>
               <% end %>
