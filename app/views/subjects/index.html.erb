@@ -1,23 +1,33 @@
 <div class="page-content">
-	<section class="card card-blue">
-		<% @subjects.each do |subject| %>
-		<header class="card-header">
-			<%= subject.name %>
-		</header>
-		<div class="card-block">
-			<p class="card-text">
-				<div class="container-fluid">
-					<div class="row">
-						<% Document.includes(:subjects).where('subjects.id' => subject.id).collect do |doc|  %>
-						<div class="col-sm-2">
-							<%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
-						</div>
-						<% end %>
+  <% if @subjects.count > 0 %>
+      <section class="card card-blue">
+        <% @subjects.each do |subject| %>
+            <header class="card-header">
+              <%= subject.name %>
+            </header>
+            <div class="card-block">
+              <p class="card-text">
+              <div class="container-fluid">
+                <div class="row">
+                  <% Document.includes(:subjects).where('subjects.id' => subject.id).collect do |doc| %>
+                      <div class="col-sm-2">
+                        <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
+                      </div>
+                  <% end %>
 
-					</div>
-				</div>
-			</p>
-		</div>
-		<% end %>
-	</section>
+                </div>
+              </div>
+              </p>
+            </div>
+        <% end %>
+
+      </section>
+  <% else %>
+      <section class="box-typical box-typical-padding">
+        <h3 class="with-border">No tienes materias favoritas</h3>
+        <%=link_to edit_teacher_path(current_teacher), id: 'notie-success', class:'btn btn-success', type: 'button' do %>
+          Agregar nuevas
+        <%end%>
+      </section>
+  <% end %>
 </div>
