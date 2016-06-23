@@ -5,17 +5,13 @@ class WelcomeController < ApplicationController
             @last_received_comments = []
             @received_comments = []
             if current_teacher.documents.count > 0
-                binding.pry
                 current_teacher.documents.each do |doc|
                     doc.ratings.each do |rating|
                         @received_comments << rating
                     end
                 end
                 @last_received_comments= @received_comments.sort! { |a,b| a.created_at <=> b.created_at}
-                binding.pry
             end
         end
     end
-
-
 end

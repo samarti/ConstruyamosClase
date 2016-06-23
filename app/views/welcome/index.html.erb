@@ -31,10 +31,12 @@
                 <div class="container-fluid">
                     <div class="row">
 
-                        <% Document.getRanking.last(6).reverse.each do |doc|  %>
+                        <% Document.getRanking.last(6).each do |doc|  %>
+                        <% if doc.ratings %>
                         <div class="col-sm-2">
                             <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
                         </div>
+                        <% end %>
                         <% end %>
 
                     </div>

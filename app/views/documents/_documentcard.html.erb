@@ -15,7 +15,13 @@
   <div class="document-statistic tbl">
     <div class="tbl-row">
       <div class="tbl-cell">
-        <b><%=doc.average_rating%></b>
+        <b>
+            <% if doc.average_rating %>
+            <%= doc.average_rating %>
+            <% else %>
+            <%= '-' %>
+            <% end %>
+        </b>
         <div style="font-size:14px; color:#e98800; display: inline-block">
           <span class="font-icon font-icon-star"></span>
         </div>

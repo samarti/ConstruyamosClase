@@ -35,8 +35,6 @@
           </div>
 
           <div class="tag-container">
-            <div class="tag"><%=@document.levels.first.name%></div>
-            <div class="tag"><%=@document.subjects.first.name%></div>
             <% @document.doc_tag_list.each do |tag| %>
                 <div class="tag"><%=tag%></div>
             <% end %>

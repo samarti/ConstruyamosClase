@@ -8,7 +8,7 @@
 					<%= link_to (image_tag rating.teacher.profile_picture), teacher_path(rating.teacher) %>
 				</div>
 				<div class="tbl-cell">
-					<p class="user-card-row-name"><a href="#" tabindex="0"><%=link_to rating.teacher.full_name, teacher_path(rating.teacher)%></a></p>
+					<p class="user-card-row-name"><a href="#" tabindex="0"><%=link_to rating.teacher.full_name, teacher_path(rating.teacher)%> en <i><%= link_to rating.document.name, document_path(rating.document) %></i></a></p>
 					<p class="user-card-row-status"><%=get_day(date.wday) + " " + date.mday.to_s + " de " + get_month(date.mon) + " de " + date.year.to_s%></p>
 					<p class="user-card-row-status">
 						<% for i in 1..rating.grade%>
