@@ -2,40 +2,41 @@
   <section class="card card">
     <header class="card-header">
       <span class="label label-pill label-danger"><%= @documents.count %></span>
-      <%if @favorites%>
-          <%= " " + "Documento".pluralize(@documents.count) + " " + "favorito".pluralize(@documents.count) %>
-      <%else%>
-        <%= " " + "Documento".pluralize(@documents.count) + " " + "subido".pluralize(@documents.count) %><% if @tag %><%= ' con etiqueta ' + @tag %><% end %>
-      <%end%>
+      <%= " " + "Documento".pluralize(@documents.count) + " " + "subido".pluralize(@documents.count) %><% if @tag %><%= ' con etiqueta ' + @tag %><% end %>
     </header>
     <div class="card-block">
       <p class="card-text">
         <div class="container-fluid" style="max-height: 600px; overflow-y: scroll;">
-            <% @documents.each do |doc|  %>
-            <div class="row">
-            <div class="col-sm-3">
-              <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
-              <% if current_teacher == doc.teacher %>
-              <div class="col-sm-6 col-sm-offset-3" style="text-align: center;">
-                <section class="box-typical">
-                  <header class="box-typical-header-sm"><%= link_to "Editar", edit_document_path(doc) %></header>
-                </section>
-              </div>
-              <% end %>
-            </div>
-            <div class="col-sm-9">
-              <div class="box-typical" style="padding: 10px;">
-                <p>
-                <%= doc.description.slice(0, 1800)%><%="..." if doc.description.length > 1800 %>
-                </p>
-              </div>
-            </div>
+          <% @documents.each do |doc|  %>
+              <div class="row">
+                <div class="col-sm-3">
+                  <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
+                  <% if current_teacher == doc.teacher %>
+                      <div class="col-sm-6">
+                        <section class="box-typical">
+                          <header class="box-typical-header-sm document-link"><%= link_to "Editar", edit_document_path(doc) %></header>
+                        </section>
+                      </div>
+                      <div class="col-sm-6">
+                        <section class="box-typical" >
+                          <header class="box-typical-header-sm document-link"><%= link_to "Eliminar", document_path(doc), method: :delete, style: "color: red;" %></header>
+                        </section>
+                      </div>
+                  <% end %>
+                </div>
+                <div class="col-sm-9">
+                  <div class="box-typical" style="padding: 10px;">
+          <p>
+            <%= doc.description.slice(0, 1800)%><%="..." if doc.description.length > 1800 %>
+          </p>
+          </div>
+          </div>
           </div>
 
-            <% end %>
-        </div>
+      <% end %>
+      </div>
       </p>
-    </div>
-  </section>
+      </div>
+      </section>
 
-</div>
+      </div>

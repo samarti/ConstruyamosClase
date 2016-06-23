@@ -2,137 +2,114 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
-        <div id="document-info" data-doc-id="<%=@document.id%>" style="display: none">
-        </div>
         <section class="box-typical">
           <%= render :partial => "documents/documentcard", :locals => {:doc => @document} %>
-
-          <div class="document-card">
-            <div class="btn-group btn-group-lg" role="group" aria-label="acciones">
-              <button id="add-to-favorites" type="button" class="btn btn-default-outline">
-                <%if current_teacher.favorite_documents.find_by(id: @document.id)%>
-                    <span class="font-icon font-icon-heart liked"></span>
-                <%else%>
-                    <span class="font-icon font-icon-heart unliked"></span>
-                <%end%>
-              </button>
-
-              <a href="<%=request.base_url + @document.url%>"
-                 type="button"
-                 class="btn btn-default-outline"
-                 target="_blank" download="<%=@document.url%>">
-                <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-              </a>
-
-              <a href="<%=request.base_url + @document.url%>"
-                 type="button"
-                 class="btn btn-default-outline"
-                 target="_blank" >
-                <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
-              </a>
-
-            </div>
-          </div>
-
           <div class="tag-container">
+            <div class="tag"><%=@document.levels.first.name%></div>
+            <div class="tag"><%=@document.subjects.first.name%></div>
             <% @document.doc_tag_list.each do |tag| %>
-            <div class="tag"><%=tag%></div>
+                <div class="tag"><%=tag%></div>
             <% end %>
           </div>
-      </section>
-
-      <% if current_teacher == @document.teacher %>
-      <div class="col-sm-6 col-sm-offset-3" style="text-align: center;">
-        <section class="box-typical">
-          <header class="box-typical-header-sm"><%= link_to "Editar", edit_document_path(@document) %></header>
         </section>
-      </div>
-      <% end %>
 
-    </div>
+        <% if current_teacher == @document.teacher %>
+            <div class="col-sm-6">
+              <section class="box-typical">
+                <header class="box-typical-header-sm document-link"><%= link_to "Editar", edit_document_path(@document) %></header>
+              </section>
+            </div>
+            <div class="col-sm-6">
+              <section class="box-typical" >
+                <header class="box-typical-header-sm document-link"><%= button_to "Eliminar", document_path(@document), method: :delete, style: "color: red;" %></header>
+              </section>
+            </div>
+        <% end %>
+
+      </div>
 
 
       <div class="col-sm-9">
         <section class="card">
           <header class="card-header">Descripción</header>
           <div class="card-block">
-          <p class="card-text">
-            <%= @document.description %>
-          </p>
-        </div>
+            <p class="card-text">
+              <%= @document.description %>
+            </p>
+          </div>
         </section>
 
         <% if !current_teacher %>
-        <section class="box-typical">
-          <header class="box-typical-header-sm" style="text-align: center"><%= link_to "Para comentar por favor inicia sesión", sessions_new_path %></header>
-        </section>
+            <section class="box-typical">
+              <header class="box-typical-header-sm" style="text-align: center"><%= link_to "Para comentar por favor inicia sesión", sessions_new_path %></header>
+            </section>
         <% end %>
 
         <% if current_teacher && current_teacher != @document.teacher %>
-        <% new_rating = Rating.new %>
-        <%= form_for new_rating, url: {controller: "ratings", action: "create"} do |f| %>
-        <div class="row document-evaluation">
+            <% new_rating = Rating.new %>
+            <%= form_for new_rating, url: {controller: "ratings", action: "create"} do |f| %>
+                <div class="row document-evaluation">
 
-          <div class="col-sm-2">
-            <section class="card">
-              <header class="card-header">Evalúa</header>
-              <div class="card-block">
-                <span class="font-icon font-icon-star"></span>
-                <%= f.select :grade, options_for_select([1,2,3,4,5]), {}, class: "form-control"%>
-              </div>
-            </section>
-          </div>
+                  <div class="col-sm-2">
+                    <section class="card">
+                      <header class="card-header">Evalúa</header>
+                      <div class="card-block">
+                        <span class="font-icon font-icon-star"></span>
+                        <%= f.select :grade, options_for_select([1,2,3,4,5]), {}, class: "form-control"%>
+                      </div>
+                    </section>
+                  </div>
 
-          <div class="col-sm-10">
-            <section class="box-typical">
-              <%= f.text_area :comment, rows: "5", placeholder: "Comenta", id: "rating_comment", class: "form-control"%>
-              <!-- <textarea rows="5" class="form-control" placeholder="Comenta" data-autosize="" style="overflow: hidden; word-wrap: break-word; height: 130px;"></textarea> -->
-            </section>
-          </div>
+                  <div class="col-sm-10">
+                    <section class="box-typical">
+                      <%= f.text_area :comment, rows: "5", placeholder: "Comenta", id: "rating_comment", class: "form-control"%>
+                      <!-- <textarea rows="5" class="form-control" placeholder="Comenta" data-autosize="" style="overflow: hidden; word-wrap: break-word; height: 130px;"></textarea> -->
+                    </section>
+                  </div>
 
-        </div>
-        <%= hidden_field_tag(:document, @document.id) %>
-        <%= hidden_field_tag(:teacher, current_teacher.id) %>
-        <%= f.submit "Enviar", class: "btn btn-rounded", id: "send-button"%>
-        <% end %>
+                </div>
+                <%= hidden_field_tag(:document, @document.id) %>
+                <%= hidden_field_tag(:teacher, current_teacher.id) %>
+                <%= f.submit "Enviar", class: "btn btn-rounded", id: "send-button"%>
+            <% end %>
         <% end %>
 
         <section class="card">
           <header class="card-header">Comentarios</header>
           <div class="card-block">
-          <% @document.ratings_by_date.each do |rating| %>
-          <% date = rating.created_at %>
-          <article class="comment-list-item">
+            <% @document.ratings_by_date.each do |rating| %>
+                <% date = rating.created_at %>
+                <article class="comment-list-item">
 
-            <header class="comment-list-header">
-              <div class="user-card-row">
-                <div class="tbl-row">
+                  <header class="comment-list-header">
+                    <div class="user-card-row">
+                      <div class="tbl-row">
 
-                  <div class="tbl-cell tbl-cell-photo">
-                      <%= link_to (image_tag rating.teacher.profile_picture), teacher_path(rating.teacher) %>
+                        <div class="tbl-cell tbl-cell-photo">
+                          <%= link_to (image_tag rating.teacher.profile_picture), teacher_path(rating.teacher) %>
+                        </div>
+
+                        <div class="tbl-cell">
+                          <p class="user-card-row-name"><a href="#" tabindex="0"><%=link_to rating.teacher.full_name, teacher_path(rating.teacher)%></a></p>
+                          <p class="user-card-row-status"><%=get_day(date.wday) + " " + date.mday.to_s + " de " + get_month(date.mon) + " de " + date.year.to_s%></p>
+                          <p class="user-card-row-status">
+                            <% for i in 1..rating.grade%>
+                                <span class="font-icon font-icon-star" style="color: #FFD700;"></span>
+                            <% end %>
+                          </p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </header>
+
+                  <div class="text-block text-block-typical">
+                    "<%= rating.comment%>"
                   </div>
 
-                  <div class="tbl-cell">
-                    <p class="user-card-row-name"><a href="#" tabindex="0"><%=link_to rating.teacher.full_name, teacher_path(rating.teacher)%></a></p>
-                    <p class="user-card-row-status"><%=get_day(date.wday) + " " + date.mday.to_s + " de " + get_month(date.mon) + " de " + date.year.to_s%></p>
-                    <p class="user-card-row-status">
-                      <% for i in 1..rating.grade%>
-                      <span class="font-icon font-icon-star" style="color: #FFD700;"></span>
-                      <% end %>
-                    </p>
-
-                  </div>
-                </div>
-              </div>
-            </header>
-
-            <div class="text-block text-block-typical">
-              "<%= rating.comment%>"
-            </div>
-
-          </article>
-          <% end %>
-        </div>
+                </article>
+            <% end %>
+          </div>
         </section>
 
       </div>
