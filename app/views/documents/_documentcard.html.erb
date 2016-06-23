@@ -15,11 +15,16 @@
   <div class="document-statistic tbl">
     <div class="tbl-row">
       <div class="tbl-cell">
-        <b><%=doc.average_rating%></b><div style="font-size:11px;"><%="Estrella".pluralize(doc.average_rating)%></div>
+        <b><%=doc.average_rating%></b>
+        <div style="font-size:14px; color:#e98800; display: inline-block">
+          <span class="font-icon font-icon-star"></span>
+        </div>
       </div>
       <div class="tbl-cell">
         <b><%=doc.ratings.count%></b>
-        <div style="font-size:11px;"><%="Comentario".pluralize(doc.ratings.count)%></div>
+        <div style="font-size:12px; color: #00a1f3; display: inline-block">
+          <span class="font-icon font-icon-comment"></span>
+        </div>
       </div>
     </div>
   </div>
