@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621224752) do
+ActiveRecord::Schema.define(version: 20160623165824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160621224752) do
     t.string   "description"
     t.integer  "teacher_id"
     t.float    "average_rating"
+    t.string   "icon"
   end
 
   add_index "documents", ["teacher_id"], name: "index_documents_on_teacher_id", using: :btree
@@ -46,11 +47,6 @@ ActiveRecord::Schema.define(version: 20160621224752) do
   create_table "documents_subjects", id: false, force: :cascade do |t|
     t.integer "document_id", null: false
     t.integer "subject_id",  null: false
-  end
-
-  create_table "documents_teachers", id: false, force: :cascade do |t|
-    t.integer "document_id", null: false
-    t.integer "teacher_id",  null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -82,11 +78,6 @@ ActiveRecord::Schema.define(version: 20160621224752) do
 
   add_index "ratings", ["document_id"], name: "index_ratings_on_document_id", using: :btree
   add_index "ratings", ["teacher_id"], name: "index_ratings_on_teacher_id", using: :btree
-
-  create_table "ratings_teachers", id: false, force: :cascade do |t|
-    t.integer "teacher_id", null: false
-    t.integer "rating_id",  null: false
-  end
 
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
