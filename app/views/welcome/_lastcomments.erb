@@ -1,0 +1,27 @@
+<% @last_received_comments.each do |rating| %>
+<% date = rating.created_at %>
+<article class="comment-list-item">
+	<header class="comment-list-header">
+		<div class="user-card-row">
+			<div class="tbl-row">
+				<div class="tbl-cell tbl-cell-photo">
+					<%= link_to (image_tag rating.teacher.profile_picture), teacher_path(rating.teacher) %>
+				</div>
+				<div class="tbl-cell">
+					<p class="user-card-row-name"><a href="#" tabindex="0"><%=link_to rating.teacher.full_name, teacher_path(rating.teacher)%></a></p>
+					<p class="user-card-row-status"><%=get_day(date.wday) + " " + date.mday.to_s + " de " + get_month(date.mon) + " de " + date.year.to_s%></p>
+					<p class="user-card-row-status">
+						<% for i in 1..rating.grade%>
+						<span class="font-icon font-icon-star" style="color: #FFD700;"></span>
+						<% end %>
+					</p>
+
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="text-block text-block-typical">
+		"<%= rating.comment%>"
+	</div>
+</article>
+<% end %>

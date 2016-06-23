@@ -14,7 +14,7 @@ class Teacher < ActiveRecord::Base
   has_many :ratings
   has_many :courses
   has_many :documents
-  
+
   has_many :favorites
   has_many :favorite_documents, through: :favorites, source: :document
 
@@ -32,7 +32,7 @@ class Teacher < ActiveRecord::Base
       self.documents.each { |doc|
         average_rating += doc.average_rating
       }
-      return average_rating/total_documents
+      return average_rating / total_documents
     else
       return "N/A"
     end
