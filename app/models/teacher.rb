@@ -30,7 +30,11 @@ class Teacher < ActiveRecord::Base
     total_documents = self.documents.count
     if total_documents > 0
       self.documents.each { |doc|
-        average_rating += doc.average_rating
+        if doc.average_rating.nil?
+            average_rating += 2.5
+        else
+            average_rating += doc.average_rating
+        end
       }
       return average_rating / total_documents
     else
