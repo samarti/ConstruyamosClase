@@ -37,7 +37,6 @@ gem 'therubyracer', '0.12.1', :require => 'v8'
 gem 'less-rails', '~> 2.7.0'
 gem "select2-rails"
 
-gem 'pry-rails'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'fancybox2-rails', '~> 0.2.8'
 gem 'jscrollpane-rails'
@@ -65,5 +64,4 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'pry-rails'
 end

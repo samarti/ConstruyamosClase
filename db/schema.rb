@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621224752) do
+ActiveRecord::Schema.define(version: 20160615031349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,27 +48,10 @@ ActiveRecord::Schema.define(version: 20160621224752) do
     t.integer "subject_id",  null: false
   end
 
-  create_table "documents_teachers", id: false, force: :cascade do |t|
-    t.integer "document_id", null: false
-    t.integer "teacher_id",  null: false
-  end
-
-  create_table "favorites", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "teacher_id"
-    t.integer  "document_id"
-  end
-
   create_table "levels", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "levels_teachers", id: false, force: :cascade do |t|
-    t.integer "teacher_id", null: false
-    t.integer "level_id",   null: false
   end
 
   create_table "ratings", force: :cascade do |t|
@@ -83,11 +66,6 @@ ActiveRecord::Schema.define(version: 20160621224752) do
   add_index "ratings", ["document_id"], name: "index_ratings_on_document_id", using: :btree
   add_index "ratings", ["teacher_id"], name: "index_ratings_on_teacher_id", using: :btree
 
-  create_table "ratings_teachers", id: false, force: :cascade do |t|
-    t.integer "teacher_id", null: false
-    t.integer "rating_id",  null: false
-  end
-
   create_table "students", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -101,11 +79,6 @@ ActiveRecord::Schema.define(version: 20160621224752) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "icon"
-  end
-
-  create_table "subjects_teachers", id: false, force: :cascade do |t|
-    t.integer "teacher_id", null: false
-    t.integer "subject_id", null: false
   end
 
   create_table "taggings", force: :cascade do |t|

@@ -30,21 +30,13 @@ class DocumentsController < ApplicationController
   # GET /documents/1
   # GET /documents/1.json
   def show
-    current_teacher
-  end
-
-  def favorites
-    current_teacher
-    @documents = @current_teacher.favorite_documents
-    @favorites = true
-
-    render 'index'
   end
 
   # GET /documents/new
   def new
     @document = Document.new
   end
+
 
   # GET /documents/1/edit
   def edit
@@ -53,34 +45,26 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-      hash = (0...10).map { ('a'..'z').to_a[rand(26)] }.join
-      name = "#{hash}_#{params[:document][:url].original_filename}"
-      directory = "public/images/upload"
-      path = File.join(directory, name)
-      File.open(path, "wb") { |f| f.write(params[:document][:url].read) };
-      @document = Document.new(:description => document_params['description'], :url => path[6, path.length],
-      :name => document_params['name'], :tags => document_params['tags'].split(/,/).to_json)
-      @document.doc_tag_list.add(document_params['tags'].split(/,/))
-      level = Level.find(params['post']['level'])
-      subject = Subject.find(params['post']['subject'])
-      @document.doc_tag_list.add(level.name)
-      @document.doc_tag_list.add(subject.name)
-      Teacher.find(current_teacher).documents << @document
-      @document.levels << level
-      @document.subjects << subject
+#raw("<i class='font-icon font-icon-cloud-upload-2 dz-default dz-message'></i><div class='drop-zone-caption dz-default dz-message'>Drag file to upload</div>")
+    name = params[:document][:url].original_filename
+    directory = "public/images/upload"
+    path = File.join(directory, name)
+    File.open(path, "wb") { |f| f.write(params[:document][:url].read) }
 
+    @document = Document.new(:description => document_params['description'], :url => params[:document][:url].original_filename,
+                             :name => document_params['name'], :tags => document_params['tags'].split(/,/).to_json)
+    @document.doc_tag_list.add(document_params['tags'].split(/,/))
 
-      respond_to do |format|
-          if @document.save
-              format.html { redirect_to @document, notice: 'Document was successfully created.' }
-              format.json { render :show, status: :created, location: @document }
-          else
-              format.html { render :new }
-              format.json { render json: @document.errors, status: :unprocessable_entity }
-          end
+    respond_to do |format|
+      if @document.save
+        format.html { redirect_to @document, notice: 'Document was successfully created.' }
+        format.json { render :show, status: :created, location: @document }
+      else
+        format.html { render :new }
+        format.json { render json: @document.errors, status: :unprocessable_entity }
       end
+    end
   end
-
 
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json

@@ -40,13 +40,11 @@ for i in 1..25
     rating.save
   end
   teacher = randomizer.rand(1..100)
-  level = Level.find(randomizer.rand(1..14))
-  subject = Subject.find(randomizer.rand(1..12))
-  document.doc_tag_list.add(level.name)
-  document.doc_tag_list.add(subject.name)
+  level = randomizer.rand(1..14)
+  subject = randomizer.rand(1..12)
   Teacher.find(teacher).documents << document
-  document.levels << level
-  document.subjects << subject
+  document.levels << Level.find(level)
+  document.subjects << Subject.find(subject)
 end
 
 

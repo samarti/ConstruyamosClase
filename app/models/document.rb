@@ -3,8 +3,6 @@ class Document < ActiveRecord::Base
   has_many :ratings
   has_and_belongs_to_many :subjects
   belongs_to :teacher
-  has_many :favorites
-  has_many :liking_teacher, through: :favorites, source: :teachers
   acts_as_taggable_on :doc_tags
   #serialize :tags, JSON
 

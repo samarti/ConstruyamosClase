@@ -25,9 +25,3 @@ Rails.application.config.assets.precompile += %w( teachers.js )
 
 Rails.application.config.assets.precompile += %w( navigation.css )
 Rails.application.config.assets.precompile += %w( navigation.js )
-
-Rails.application.config.assets.precompile += %w( levels.css )
-Rails.application.config.assets.precompile += %w( levels.js )
-
-Rails.application.config.assets.precompile += %w( subjects.css )
-Rails.application.config.assets.precompile += %w( subjects.js )
