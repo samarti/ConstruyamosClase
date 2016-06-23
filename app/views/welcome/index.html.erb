@@ -1,43 +1,45 @@
 <div class="page-content">
-  <section class="card card-blue">
-    <header class="card-header">
-      Últimos documentos
-    </header>
-    <div class="card-block">
-      <p class="card-text">
-        <div class="container-fluid">
-          <div class="row">
+    <% if logged_in? %>
+    <%= render :partial => "welcome/welcome_page" %>
+    <% end %>
+    <section class="card card-blue">
+        <header class="card-header">
+            Últimos documentos
+        </header>
+        <div class="card-block">
+            <p class="card-text">
+                <div class="container-fluid">
+                    <div class="row">
+                        <% Document.last(6).reverse.each do |doc|  %>
+                        <div class="col-sm-2">
+                            <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
+                        </div>
+                        <% end %>
 
-            <% Document.last(6).reverse.each do |doc|  %>
-            <div class="col-sm-2">
-              <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
-            </div>
-            <% end %>
-
-          </div>
+                    </div>
+                </div>
+            </p>
         </div>
-      </p>
-    </div>
-  </section>
+    </section>
 
-  <section class="card card-blue">
-    <header class="card-header">
-      Documentos destacados
-    </header>
-    <div class="card-block">
-      <p class="card-text">
-        <div class="container-fluid">
-          <div class="row">
+    <section class="card card-blue">
+        <header class="card-header">
+            Documentos destacados
+        </header>
+        <div class="card-block">
+            <p class="card-text">
+                <div class="container-fluid">
+                    <div class="row">
 
-            <% Document.getRanking.last(6).reverse.each do |doc|  %>
-            <div class="col-sm-2">
-              <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
-            </div>
-            <% end %>
+                        <% Document.getRanking.last(6).reverse.each do |doc|  %>
+                        <div class="col-sm-2">
+                            <%= render :partial => "documents/documentcard", :locals => {:doc => doc} %>
+                        </div>
+                        <% end %>
 
-          </div>
+                    </div>
+                </div>
+            </p>
         </div>
-      </p>
-    </div>
-  </section>
+    </section>
 </div>
