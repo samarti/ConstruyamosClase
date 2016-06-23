@@ -1,4 +1,6 @@
 <div class="page-content">
+  <%if @levels.count > 0%>
+
 	<section class="card card-blue">
 		<% @levels.each do |levels| %>
 		<header class="card-header">
@@ -20,4 +22,13 @@
 		</div>
 		<% end %>
 	</section>
+
+  <%else%>
+      <section class="box-typical box-typical-padding">
+        <h3 class="with-border">No tienes cursos favoritos</h3>
+        <%=link_to edit_teacher_path(current_teacher), id: 'notie-success', class:'btn btn-success', type: 'button' do %>
+            Agregar nuevos
+        <%end%>
+      </section>
+  <%end%>
 </div>

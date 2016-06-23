@@ -1,64 +1,62 @@
 <div class="mobile-menu-left-overlay"></div>
 <nav class="side-menu">
-    <ul class="side-menu-list">
-        <li class="grey ">
-            <%= link_to(root_path) do %>
-              <i class="font-icon font-icon-dashboard"></i>
-              <span class="lbl">Inicio</span>
-            <% end %>
-        </li>
-        <% if logged_in? %>
-        <li class="purple with-sub">
+  <ul class="side-menu-list">
+    <li class="green">
+      <%= link_to(root_path) do %>
+          <i class="font-icon font-icon-dashboard"></i>
+          <span class="lbl">Inicio</span>
+      <% end %>
+    </li>
+    <% if logged_in? %>
+        <li class="blue"> <!-- navegar cursos -->
             <span>
-                <i class="font-icon font-icon-pencil"></i>
-                <span class="lbl">Cursos</span>
+                <i class="glyphicon glyphicon-th"></i>
+              <%= link_to(navigation_index_path, class: 'lbl', id: 'navegar-cursos') do %>
+                  Navegar Cursos
+              <% end %>
             </span>
-            <ul>
-                <li>
-                    <%= link_to(levels_path) do %>
-                      <span class="lbl">Mis Cursos</span>
-                    <% end %>
-                </li>
-                <li>
-                    <%= link_to(subjects_path) do %>
-                      <span class="lbl">Mis Materias</span>
-                    <% end %>
-                </li>
-            </ul>
+
         </li>
-        <li class="blue-dirty with-sub">
+
+        <li class="gold"> <!-- material favorito -->
             <span>
-                <i class="font-icon font-icon-doc"></i>
-                <span class="lbl">Material de Clases</span>
+                <i class="glyphicon glyphicon-star-empty"></i>
+              <%= link_to(documents_favorites_path, class: 'lbl', id: 'material-favorito') do %>
+                  Material Favorito
+              <% end %>
             </span>
-            <ul>
-                <li><span class="lbl"> <%=link_to "Mi Material", teacher_documents_path(current_teacher)%></span></li>
-                <li>
-                    <%= link_to(navigation_index_path) do %>
-                      <span class="lbl">Navegar</span>
-                    <% end %>
-                </li>
-                <li>
-                  <%= link_to documents_favorites_path do %>
-                      <span class="lbl">Material Favorito</span>
-                  <% end %>
-                </li>
-                <li>
-                    <%= link_to(new_document_path) do %>
-                      <span class="lbl">Subir Material</span>
-                    <% end %>
-                </li>
-            </ul>
+
         </li>
-        <li class="green with-sub">
+
+        <li class="orange-red"> <!-- mis cursos -->
             <span>
-                <i class="font-icon font-icon-comment"></i>
-                <span class="lbl">Mensajes</span>
+                <i class="glyphicon glyphicon-folder-open"></i>
+              <%= link_to(levels_path, class: 'lbl', id: 'mis-cursos') do %>
+                  Mis Cursos
+              <% end %>
             </span>
-            <ul>
-                <li><a href="ui-form.html"><span class="lbl">Buzón</span></a></li>
-                <li><a href="ui-buttons.html"><span class="lbl">Nuevo</span></a></li>
-            </ul>
+
         </li>
-        <% end %>
+
+        <li class="red"> <!-- mis materias -->
+            <span>
+                <i class="glyphicon glyphicon-apple"></i>
+              <%= link_to(subjects_path, class: 'lbl', id: 'mis-materias') do %>
+                  Mis Materias
+              <% end %>
+            </span>
+
+        </li>
+
+        <li class="magenta"> <!-- subir material -->
+            <span>
+                <i class="fa fa-upload"></i>
+              <%= link_to(new_document_path, class: 'lbl', id: 'subir-material') do %>
+                  Subir Material
+              <% end %>
+            </span>
+
+        </li>
+
+    <% end %>
 </nav><!--.side-menu-->
